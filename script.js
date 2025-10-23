@@ -1,4 +1,4 @@
-// DOM Content Loaded
+// script.js
 document.addEventListener('DOMContentLoaded', function() {
     initializeApp();
 });
@@ -11,15 +11,16 @@ function initializeApp() {
     initializeMobileMenu();
     initializeContactForm();
     initializeSmoothScrolling();
-    initializeDataVisualizations();
+    initializeProjectInteractions();
+    initializeSkillAnimations();
 }
 
-// Dark Mode Functionality
+// Dark Mode Toggle
 function initializeDarkMode() {
     const darkModeToggle = document.getElementById('darkModeToggle');
     const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
     
-    // Check for saved theme or prefered scheme
+    // Check for saved theme or preferred scheme
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'dark' || (!savedTheme && prefersDarkScheme.matches)) {
         document.documentElement.setAttribute('data-theme', 'dark');
@@ -42,19 +43,23 @@ function initializeDarkMode() {
 
 function updateDarkModeIcon(isDark) {
     const icon = document.querySelector('#darkModeToggle i');
-    icon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+    if (icon) {
+        icon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+    }
 }
 
-// Typewriter Effect with Data Science focus
+// Typewriter Effect
 function initializeTypewriter() {
     const texts = [
         "Data Science Student",
-        "Machine Learning Enthusiast",
+        "Machine Learning Enthusiast", 
         "Data Analyst",
         "Python Developer",
         "AI Researcher"
     ];
     const typewriterElement = document.querySelector('.typewriter-text');
+    if (!typewriterElement) return;
+
     let textIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
@@ -74,7 +79,7 @@ function initializeTypewriter() {
         }
 
         if (!isDeleting && charIndex === currentText.length) {
-            typingSpeed = 2000; // Pause at end
+            typingSpeed = 2000;
             isDeleting = true;
         } else if (isDeleting && charIndex === 0) {
             isDeleting = false;
@@ -85,21 +90,7 @@ function initializeTypewriter() {
         setTimeout(type, typingSpeed);
     }
 
-    // Start typing after a delay
     setTimeout(type, 1000);
-}
-
-// Data Visualization Placeholders
-function initializeDataVisualizations() {
-    // This is where you can add actual data visualizations later
-    // For now, we'll just add some interactive elements
-    
-    // Add click handlers for project cards to show more details
-    document.querySelectorAll('.project-card').forEach(card => {
-        card.addEventListener('click', function() {
-            this.classList.toggle('expanded');
-        });
-    });
 }
 
 // Scroll Animations
@@ -112,46 +103,28 @@ function initializeScrollAnimations() {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-                
-                // Add special animation for skills
-                if (entry.target.classList.contains('skill-item')) {
-                    entry.target.style.animation = 'bounceIn 0.6s ease';
-                }
+                entry.target.classList.add('animate-in');
             }
         });
     }, observerOptions);
 
-    // Observe all sections and project cards
+    // Observe all animated elements
     document.querySelectorAll('section, .project-card, .skill-item, .stat').forEach(element => {
-        element.style.opacity = '0';
-        element.style.transform = 'translateY(30px)';
-        element.style.transition = 'all 0.6s ease';
         observer.observe(element);
     });
 }
 
-// Counter Animation for Stats
+// Counter Animation
 function initializeCounterAnimations() {
     const counters = document.querySelectorAll('.stat-number');
-    const speed = 200;
+    if (counters.length === 0) return;
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const target = +entry.target.getAttribute('data-count');
-                const count = +entry.target.innerText;
-                const inc = target / speed;
-
-                if (count < target) {
-                    entry.target.innerText = Math.ceil(count + inc);
-                    setTimeout(() => {
-                        observer.observe(entry.target);
-                    }, 1);
-                } else {
-                    entry.target.innerText = target;
-                }
+                animateCounter(entry.target, target);
+                observer.unobserve(entry.target);
             }
         });
     }, { threshold: 0.5 });
@@ -161,10 +134,26 @@ function initializeCounterAnimations() {
     });
 }
 
+function animateCounter(element, target) {
+    let current = 0;
+    const increment = target / 50;
+    const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+            element.textContent = target;
+            clearInterval(timer);
+        } else {
+            element.textContent = Math.floor(current);
+        }
+    }, 30);
+}
+
 // Mobile Menu
 function initializeMobileMenu() {
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
     const navMenu = document.querySelector('.nav-menu');
+
+    if (!mobileMenuBtn || !navMenu) return;
 
     mobileMenuBtn.addEventListener('click', () => {
         const isVisible = navMenu.style.display === 'flex';
@@ -196,11 +185,11 @@ function initializeMobileMenu() {
 // Contact Form
 function initializeContactForm() {
     const contactForm = document.getElementById('contactForm');
+    if (!contactForm) return;
     
     contactForm.addEventListener('submit', function(e) {
         e.preventDefault();
         
-        // Get form data
         const formData = new FormData(contactForm);
         const data = Object.fromEntries(formData);
         
@@ -210,10 +199,6 @@ function initializeContactForm() {
             return;
         }
         
-        // Here you would typically send the data to a server
-        // For now, we'll just show a success message
-        console.log('Form submitted:', data);
-        
         // Show success message
         showNotification('Message sent successfully! I\'ll get back to you soon.', 'success');
         
@@ -222,7 +207,6 @@ function initializeContactForm() {
     });
 }
 
-// Email validation
 function validateEmail(email) {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return re.test(email);
@@ -233,11 +217,12 @@ function initializeSmoothScrolling() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
+            const targetId = this.getAttribute('href');
+            const target = document.querySelector(targetId);
             if (target) {
                 const offsetTop = target.getBoundingClientRect().top + window.pageYOffset;
                 window.scrollTo({
-                    top: offsetTop - 80, // Adjust for fixed header
+                    top: offsetTop - 80,
                     behavior: 'smooth'
                 });
             }
@@ -245,33 +230,66 @@ function initializeSmoothScrolling() {
     });
 }
 
+// Project Interactions
+function initializeProjectInteractions() {
+    const projectCards = document.querySelectorAll('.project-card');
+    
+    projectCards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            card.style.transform = 'translateY(-10px)';
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'translateY(0)';
+        });
+        
+        // Click to show more details
+        card.addEventListener('click', function(e) {
+            if (!e.target.closest('.project-link')) {
+                this.classList.toggle('expanded');
+            }
+        });
+    });
+}
+
+// Skill Animations
+function initializeSkillAnimations() {
+    const skillItems = document.querySelectorAll('.skill-item');
+    
+    skillItems.forEach(item => {
+        item.addEventListener('mouseenter', () => {
+            item.style.transform = 'translateX(10px) scale(1.05)';
+        });
+        
+        item.addEventListener('mouseleave', () => {
+            item.style.transform = 'translateX(0) scale(1)';
+        });
+    });
+}
+
 // Notification System
 function showNotification(message, type = 'info') {
+    // Remove existing notifications
+    document.querySelectorAll('.notification').forEach(notification => {
+        notification.remove();
+    });
+
     const notification = document.createElement('div');
     notification.className = `notification notification-${type}`;
     notification.textContent = message;
-    
-    // Add styles for notification
-    Object.assign(notification.style, {
-        position: 'fixed',
-        top: '20px',
-        right: '20px',
-        padding: '1rem 2rem',
-        borderRadius: '5px',
-        color: 'white',
-        fontWeight: '500',
-        zIndex: '10000',
-        transform: 'translateX(100%)',
-        transition: 'transform 0.3s ease'
-    });
-    
-    if (type === 'success') {
-        notification.style.background = 'var(--success-color)';
-    } else if (type === 'error') {
-        notification.style.background = 'var(--danger-color)';
-    } else {
-        notification.style.background = 'var(--info-color)';
-    }
+    notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 1rem 2rem;
+        border-radius: 5px;
+        color: white;
+        font-weight: 500;
+        z-index: 10000;
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+        background: ${type === 'success' ? '#28a745' : type === 'error' ? '#dc3545' : '#17a2b8'};
+    `;
     
     document.body.appendChild(notification);
     
@@ -285,52 +303,49 @@ function showNotification(message, type = 'info') {
         notification.style.transform = 'translateX(100%)';
         setTimeout(() => {
             if (notification.parentNode) {
-                document.body.removeChild(notification);
+                notification.remove();
             }
         }, 300);
     }, 3000);
 }
 
-// Add CSS for animations
-const additionalStyles = document.createElement('style');
-additionalStyles.textContent = `
-    @keyframes bounceIn {
-        0% { transform: scale(0.3); opacity: 0; }
-        50% { transform: scale(1.05); }
-        70% { transform: scale(0.9); }
-        100% { transform: scale(1); opacity: 1; }
-    }
-    
-    .project-card {
-        cursor: pointer;
-        transition: all 0.3s ease;
+// Add CSS for animations dynamically
+const dynamicStyles = `
+    .animate-in {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
     }
     
     .project-card.expanded {
-        transform: scale(1.02);
-        box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        transform: scale(1.02) translateY(-10px) !important;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.3) !important;
     }
     
     .skill-item:hover {
-        background: var(--primary-color);
-        color: white;
+        background: var(--primary-color) !important;
+        color: white !important;
+        transform: translateX(10px) scale(1.05) !important;
     }
     
     .skill-item:hover i {
-        color: white;
+        color: white !important;
+    }
+    
+    @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+    }
+    
+    .profile-photo {
+        animation: float 6s ease-in-out infinite;
     }
 `;
-document.head.appendChild(additionalStyles);
 
-// Add loading animation
+const styleSheet = document.createElement('style');
+styleSheet.textContent = dynamicStyles;
+document.head.appendChild(styleSheet);
+
+// Initialize on load
 window.addEventListener('load', () => {
     document.body.classList.add('loaded');
-    
-    // Add a small delay to ensure all elements are loaded
-    setTimeout(() => {
-        document.querySelectorAll('section').forEach(section => {
-            section.style.opacity = '1';
-            section.style.transform = 'translateY(0)';
-        });
-    }, 500);
 });
