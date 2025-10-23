@@ -1,54 +1,47 @@
 /*!
-* Start Bootstrap - Freelancer v7.0.3 (https://startbootstrap.com/theme/freelancer)
-* Copyright 2013-2021 Start Bootstrap
-* Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-freelancer/blob/master/LICENSE)
-*/
-//
-// Scripts
-// 
+ * Custom JS for Navbar shrink and responsive menu toggle
+ */
 
-window.addEventListener('DOMContentLoaded', event => {
+window.addEventListener('DOMContentLoaded', () => {
 
-    // Navbar shrink function
-    var navbarShrink = function () {
-        const navbarCollapsible = document.body.querySelector('#mainNav');
-        if (!navbarCollapsible) {
-            return;
-        }
-        if (window.scrollY === 0) {
-            navbarCollapsible.classList.remove('navbar-shrink')
-        } else {
-            navbarCollapsible.classList.add('navbar-shrink')
-        }
+  // Function to shrink navbar on scroll
+  const navbarShrink = () => {
+    const navbar = document.body.querySelector('#mainNav');
+    if (!navbar) return;
 
-    };
+    if (window.scrollY === 0) {
+      navbar.classList.remove('navbar-shrink');
+    } else {
+      navbar.classList.add('navbar-shrink');
+    }
+  };
 
-    // Shrink the navbar 
-    navbarShrink();
+  // Shrink navbar immediately if page is not at top
+  navbarShrink();
 
-    // Shrink the navbar when page is scrolled
-    document.addEventListener('scroll', navbarShrink);
+  // Shrink navbar when page is scrolled
+  document.addEventListener('scroll', navbarShrink);
 
-    // Activate Bootstrap scrollspy on the main nav element
-    const mainNav = document.body.querySelector('#mainNav');
-    if (mainNav) {
-        new bootstrap.ScrollSpy(document.body, {
-            target: '#mainNav',
-            offset: 72,
-        });
-    };
-
-    // Collapse responsive navbar when toggler is visible
-    const navbarToggler = document.body.querySelector('.navbar-toggler');
-    const responsiveNavItems = [].slice.call(
-        document.querySelectorAll('#navbarResponsive .nav-link')
-    );
-    responsiveNavItems.map(function (responsiveNavItem) {
-        responsiveNavItem.addEventListener('click', () => {
-            if (window.getComputedStyle(navbarToggler).display !== 'none') {
-                navbarToggler.click();
-            }
-        });
+  // Activate Bootstrap scrollspy on #mainNav for smooth highlighting
+  const mainNav = document.body.querySelector('#mainNav');
+  if (mainNav) {
+    new bootstrap.ScrollSpy(document.body, {
+      target: '#mainNav',
+      offset: 72,
     });
+  }
+
+  // Collapse responsive navbar when a nav link is clicked (for mobile)
+  const navbarToggler = document.body.querySelector('.navbar-toggler');
+  const responsiveNavItems = Array.from(document.querySelectorAll('#navbarResponsive .nav-link'));
+
+  responsiveNavItems.forEach((navLink) => {
+    navLink.addEventListener('click', () => {
+      // Only toggle collapse if toggler is visible (mobile)
+      if (window.getComputedStyle(navbarToggler).display !== 'none') {
+        navbarToggler.click();
+      }
+    });
+  });
 
 });
