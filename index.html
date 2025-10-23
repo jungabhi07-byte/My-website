@@ -29,20 +29,26 @@
   <!-- HERO -->
   <header>
     <img 
-  class="masthead-avatar" 
-  src="intro.jpg" 
-  alt="Abhishek Budhathoki"
-  style="width: 250px; height: 250px; border-radius: 50%; border: 5px solid white; object-fit: cover; box-shadow: 0 8px 20px rgba(0,0,0,0.3); margin-bottom: 30px;"
->
+      class="masthead-avatar" 
+      src="intro.jpg" 
+      alt="Abhishek Budhathoki"
+      style="width: 250px; height: 250px; border-radius: 50%; border: 5px solid white; object-fit: cover; box-shadow: 0 8px 20px rgba(0,0,0,0.3); margin-bottom: 30px;"
+    >
 
     <h1>Abhishek Budhathoki</h1>
     <p>Data Science Student at Kathmandu University</p>
+
+    <!-- Navigation -->
     <nav>
-      <a href="#about"><i class="fas fa-user"></i></a>
-      <a href="#skills"><i class="fas fa-chart-bar"></i></a>
-      <a href="#projects"><i class="fas fa-folder-open"></i></a>
-      <a href="#contact"><i class="fas fa-envelope"></i></a>
-      <a href="https://github.com/jungabhi07-byte" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="#about" title="About Me"><i class="fas fa-user"></i></a>
+      <a href="#skills" title="Skills"><i class="fas fa-chart-bar"></i></a>
+      <a href="#projects" title="Projects"><i class="fas fa-folder-open"></i></a>
+      <a href="#contact" title="Contact"><i class="fas fa-envelope"></i></a>
+
+      <!-- Social Links -->
+      <a href="https://github.com/jungabhi07-byte/My-website" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+      <a href="https://www.facebook.com/abhishek.budhathoki.16804" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
+      <a href="https://www.youtube.com/@AbhishekBudhathoki7" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
     </nav>
   </header>
 
@@ -109,6 +115,16 @@
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     AOS.init();
+
+    // Smooth Scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
 
     // Skills Chart
     const ctx = document.getElementById('skillsChart');
