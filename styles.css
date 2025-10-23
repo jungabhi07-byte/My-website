@@ -1,10 +1,14 @@
+/* ===== GLOBAL ===== */
 body {
   font-family: "Lato", sans-serif;
   scroll-behavior: smooth;
-  margin: 1;
-  padding: 1;
+  margin: 0;
+  padding: 0;
+  color: #333;
+  background-color: #f8f9fa;
 }
 
+/* ===== HEADER (Hero Section) ===== */
 header {
   background: linear-gradient(to bottom right, #007bff, #6610f2);
   color: white;
@@ -15,24 +19,29 @@ header {
 header h1 {
   margin: 10px 0;
   font-size: 3rem;
+  font-weight: 700;
 }
 
 header p {
   font-size: 1.25rem;
 }
 
+/* Avatar */
 .masthead-avatar {
   border-radius: 50%;
   width: 180px;
   border: 4px solid white;
   margin-bottom: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
+/* ===== NAVIGATION ===== */
 nav a {
   color: white;
   margin: 0 10px;
   font-size: 1.5rem;
   transition: 0.3s;
+  text-decoration: none;
 }
 
 nav a:hover,
@@ -40,30 +49,63 @@ nav a.active {
   color: #ffcc00 !important;
 }
 
+/* ===== SECTIONS ===== */
 section {
   padding: 60px 20px;
 }
 
+section h2 {
+  font-size: 2.2rem;
+  color: #007bff;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+/* ===== PROJECTS ===== */
 #projects .card {
   transition: 0.3s;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 #projects .card:hover {
   transform: scale(1.05);
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.2);
 }
 
+#projects .card-img-top {
+  height: 200px;
+  object-fit: cover;
+}
+
+/* ===== BUTTONS ===== */
+.btn-outline-primary {
+  margin-top: 10px;
+  border: 2px solid #007bff;
+  color: #007bff;
+  border-radius: 25px;
+  padding: 8px 20px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-outline-primary:hover {
+  background-color: #007bff;
+  color: white;
+}
+
+/* ===== FOOTER ===== */
 footer {
   background-color: #111;
   color: white;
   padding: 20px;
+  text-align: center;
+  font-size: 0.9rem;
 }
 
-.btn-outline-primary {
-  margin-top: 10px;
-}
-
-/* ✅ Fixed section */
+/* ===== MAIN NAV ICON MENU ===== */
 .main-nav {
   display: flex;
   flex-direction: column;
@@ -91,4 +133,27 @@ footer {
 
 .social-links a {
   font-size: 26px;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+  header {
+    padding: 60px 15px;
+  }
+
+  header h1 {
+    font-size: 2.2rem;
+  }
+
+  header p {
+    font-size: 1rem;
+  }
+
+  nav a {
+    font-size: 1.2rem;
+  }
+
+  #projects .card-img-top {
+    height: 160px;
+  }
 }
