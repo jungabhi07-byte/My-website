@@ -63,6 +63,7 @@ footer {
   margin-top: 10px;
 }
 
+/* ✅ Fixed section */
 .main-nav {
   display: flex;
   flex-direction: column;
