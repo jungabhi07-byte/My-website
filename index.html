@@ -1,187 +1,342 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Portfolio of Abhishek Budhathoki" />
-  <title>Abhishek Budhathoki | Data Scientist</title>
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/x-icon" href="favicon.ico" />
-
-  <!-- Font Awesome -->
-  <script src="scripts.js" crossorigin="main"></script>
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Lato:400,700" rel="stylesheet" />
-
-  <!-- Bootstrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" />
-
-  <!-- AOS Animation -->
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="style.css" />
-  <style>
-    /* Social Links Styling */
-    .social-links {
-      margin-top: 100px;
-      display: flex;
-      justify-content: center;
-      gap: 150px;
-    }
-    .social-links a {
-      font-size: 260px;
-      color: red;
-      padding: 800;
-      border-radius: 50%;
-      transition: color 0.3s ease, background-color 0.3s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-decoration: none;
-    }
-    .social-links a:hover {
-      color: white;
-      background-color: green;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abhishek Budhathoki | Data Scientist</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-
-  <!-- HERO -->
-  <header>
-    <img
-      class="masthead-avatar"
-      src="intro.jpg"
-      alt="Abhishek Budhathoki"
-      style="width: 250px; height: 250px; border-radius: 50%; border: 5px solid white; object-fit: cover; box-shadow: 0 8px 20px rgba(0,0,0,0.3); margin-bottom: 30px;"
-    />
-
-    <h1>Abhishek Budhathoki</h1>
-    <p>Data Science Student at Kathmandu University</p>
-
     <!-- Navigation -->
-    <nav class="main-nav" aria-label="Primary navigation">
-      <div class="menu-links">
-        <a href="#about" title="About Me"><i class="fas fa-user"></i></a>
-        <a href="#skills" title="Skills"><i class="fas fa-chart-bar"></i></a>
-        <a href="#projects" title="Projects"><i class="fas fa-folder-open"></i></a>
-        <a href="#contact" title="Contact"><i class="fas fa-envelope"></i></a>
-      </div>
+    <nav class="nav-links">
+        <div class="nav-container">
+            <div class="nav-logo">Abhishek</div>
+            <div class="nav-menu">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#projects">Projects</a>
+                <a href="#skills">Skills</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
     </nav>
-  </header>
 
-  <!-- ABOUT -->
-  <section id="about" data-aos="fade-up">
-    <div class="container text-center">
-      <h2>About Me</h2>
-      <p>
-        I’m passionate about transforming data into insights using Python, R, and Machine Learning.
-        I love solving real-world problems with data and exploring new analytical techniques.
-      </p>
-    </div>
-  </section>
-
-  <!-- SKILLS -->
-  <section id="skills" data-aos="fade-up">
-    <div class="container text-center">
-      <h2>My Skills</h2>
-      <canvas id="skillsChart" width="400" height="200"></canvas>
-    </div>
-  </section>
-
-  <!-- PROJECTS -->
-  <section id="projects" data-aos="fade-up">
-    <div class="container">
-      <h2 class="text-center mb-4">My Projects</h2>
-      <div class="row">
-        <div class="col-md-4 mb-4">
-          <div class="card">
-            <img src="project1.jpg" class="card-img-top" alt="Weather Data Visualization" />
-            <div class="card-body">
-              <h5 class="card-title">Weather Data Visualization</h5>
-              <p class="card-text">Analyzed and visualized meteorological data using Python and Plotly.</p>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="greeting">Namaste, I'm </span>
+                <span class="name">Abhishek Budhathoki</span>
+            </h1>
+            <p class="hero-subtitle">Data Science Student at Kathmandu University</p>
+            <div class="typewriter-container">
+                <span class="typewriter-text"></span>
             </div>
-          </div>
-        </div>
-        <div class="col-md-4 mb-4">
-          <div class="card">
-            <img src="project2.jpg" class="card-img-top" alt="ML Project" />
-            <div class="card-body">
-              <h5 class="card-title">Machine Learning Model</h5>
-              <p class="card-text">Built a classification model to predict outcomes from structured datasets.</p>
+            <div class="hero-buttons">
+                <a href="#projects" class="btn btn-primary">View My Projects</a>
+                <a href="#contact" class="btn btn-secondary">Get In Touch</a>
             </div>
-          </div>
         </div>
-      </div>
-    </div>
-  </section>
+        <div class="scroll-indicator">
+            <span>Scroll Down</span>
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
 
-  <!-- CONTACT -->
-  <section id="contact" data-aos="fade-up">
-    <div class="container text-center">
-      <h2>Contact Me</h2>
-      <p>Let’s collaborate or discuss data-driven solutions!</p>
-      <a href="mailto:jungabhi07@gmail.com" class="btn btn-outline-primary">Email Me</a>
-      <a href="https://github.com/jungabhi07-byte" target="_blank" rel="noopener noreferrer" title="GitHub"><i class="fab fa-github"></i></a>
-      <a href="https://www.facebook.com/abhishek.budhathoki.16804" target="_blank" rel="noopener noreferrer" title="Facebook"><i class="fab fa-facebook"></i></a>
-      <a href="https://www.instagram.com/abhishekbudhathoki7" target="_blank" rel="noopener noreferrer" title="Instagram"><i class="fab fa-instagram"></i></a>
-      <a href="https://www.youtube.com/@AbhishekBudhathoki7" target="_blank" rel="noopener noreferrer" title="YouTube"><i class="fab fa-youtube"></i></a>
-    </div>
- 
-  </section>
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>I'm a passionate Data Science student at Kathmandu University, dedicated to transforming complex data into meaningful insights. I love exploring machine learning algorithms, statistical models, and data visualization techniques to solve real-world problems.</p>
+                    <p>When I'm not coding or analyzing data, you can find me exploring new technologies, contributing to open-source projects, or participating in data science competitions.</p>
+                    <div class="about-stats">
+                        <div class="stat">
+                            <span class="stat-number" data-count="15">0</span>
+                            <span class="stat-label">Projects Completed</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number" data-count="8">0</span>
+                            <span class="stat-label">Technologies</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number" data-count="2">0</span>
+                            <span class="stat-label">Years Experience</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- FOOTER -->
-  <footer class="text-center">
-    <p>&copy; 2025 Abhishek Budhathoki. All rights reserved.</p>
-  </footer>
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <div class="container">
+            <h2 class="section-title">Data Science Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Nepal Stock Market Prediction</h3>
+                        <p>Machine learning model to predict stock prices in Nepal's stock market using LSTM and sentiment analysis of financial news.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">LSTM</span>
+                            <span class="tech-tag">TensorFlow</span>
+                            <span class="tech-tag">NLP</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/jungabhi07-byte" class="project-link">
+                                <i class="fab fa-github"></i> Code
+                            </a>
+                            <a href="#" class="project-link">
+                                <i class="fas fa-chart-bar"></i> Analysis
+                            </a>
+                        </div>
+                    </div>
+                </div>
 
-  <!-- Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    AOS.init();
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            <i class="fas fa-lungs"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>COVID-19 Data Analysis</h3>
+                        <p>Comprehensive analysis of COVID-19 spread patterns and predictive modeling for case forecasting in South Asia.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Pandas</span>
+                            <span class="tech-tag">Matplotlib</span>
+                            <span class="tech-tag">Scikit-learn</span>
+                            <span class="tech-tag">Seaborn</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/jungabhi07-byte" class="project-link">
+                                <i class="fab fa-github"></i> Code
+                            </a>
+                            <a href="#" class="project-link">
+                                <i class="fas fa-chart-bar"></i> Dashboard
+                            </a>
+                        </div>
+                    </div>
+                </div>
 
-    // Smooth Scroll
-    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-      anchor.addEventListener("click", function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute("href")).scrollIntoView({
-          behavior: "smooth",
-        });
-      });
-    });
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            <i class="fas fa-seedling"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Agriculture Yield Prediction</h3>
+                        <p>Predicting crop yields in Nepal using satellite imagery and weather data with random forest regression.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Random Forest</span>
+                            <span class="tech-tag">OpenCV</span>
+                            <span class="tech-tag">GeoPandas</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/jungabhi07-byte" class="project-link">
+                                <i class="fab fa-github"></i> Code
+                            </a>
+                            <a href="#" class="project-link">
+                                <i class="fas fa-map-marked-alt"></i> Visualization
+                            </a>
+                        </div>
+                    </div>
+                </div>
 
-    // Skills Chart
-    const ctx = document.getElementById("skillsChart");
-    new Chart(ctx, {
-      type: "bar",
-      data: {
-        labels: ["Python", "R", "Java", "Statistics", "Machine Learning"],
-        datasets: [
-          {
-            label: "Skill Level (%)",
-            data: [90, 85, 75, 80, 70],
-            backgroundColor: [
-              "#007bff",
-              "#6610f2",
-              "#6f42c1",
-              "#17a2b8",
-              "#20c997",
-            ],
-          },
-        ],
-      },
-      options: {
-        indexAxis: "y",
-        scales: {
-          x: { beginAtZero: true },
-        },
-      },
-    });
-  </script>
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Nepali Sentiment Analysis</h3>
+                        <p>NLP model for sentiment analysis of Nepali text using custom word embeddings and transformer models.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">NLP</span>
+                            <span class="tech-tag">PyTorch</span>
+                            <span class="tech-tag">Transformers</span>
+                            <span class="tech-tag">NLTK</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/jungabhi07-byte" class="project-link">
+                                <i class="fab fa-github"></i> Code
+                            </a>
+                            <a href="#" class="project-link">
+                                <i class="fas fa-brain"></i> Model
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <div class="container">
+            <h2 class="section-title">Skills & Technologies</h2>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>Data Science</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <i class="fab fa-python"></i>
+                            <span>Python</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-chart-bar"></i>
+                            <span>Data Analysis</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-brain"></i>
+                            <span>Machine Learning</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-project-diagram"></i>
+                            <span>Deep Learning</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Tools & Libraries</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <i class="fas fa-table"></i>
+                            <span>Pandas & NumPy</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Matplotlib & Seaborn</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-robot"></i>
+                            <span>Scikit-learn</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-network-wired"></i>
+                            <span>TensorFlow & PyTorch</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Development</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <i class="fas fa-database"></i>
+                            <span>SQL</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-r-project"></i>
+                            <span>R Programming</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-git-alt"></i>
+                            <span>Git & GitHub</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-cloud"></i>
+                            <span>Google Colab</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Let's Connect</h3>
+                    <p>I'm always open to discussing data science projects, research opportunities, or just chatting about technology and innovation.</p>
+                    <div class="contact-methods">
+                        <div class="contact-method">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <strong>Email</strong>
+                                <span>jungabhi07@gmail.com</span>
+                            </div>
+                        </div>
+                        <div class="contact-method">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <strong>Location</strong>
+                                <span>Kathmandu University, Dhulikhel</span>
+                            </div>
+                        </div>
+                        <div class="contact-method">
+                            <i class="fas fa-university"></i>
+                            <div>
+                                <strong>Education</strong>
+                                <span>B.Sc. Data Science</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://github.com/jungabhi07-byte" class="social-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://kaggle.com/abhishekbudhathoki" class="social-link">
+                            <i class="fab fa-kaggle"></i>
+                        </a>
+                        <a href="https://medium.com/@abhishekbudhathoki" class="social-link">
+                            <i class="fab fa-medium"></i>
+                        </a>
+                    </div>
+                </div>
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="subject" name="subject" placeholder="Subject" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-paper-plane"></i> Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Abhishek Budhathoki. Data Science Student at Kathmandu University.</p>
+        </div>
+    </footer>
+
+    <!-- Dark Mode Toggle -->
+    <button class="dark-mode-toggle" id="darkModeToggle">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
 </body>
 </html>
