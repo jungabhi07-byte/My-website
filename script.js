@@ -189,17 +189,17 @@ window.addEventListener('DOMContentLoaded', event => {
     }
 
     // Animate skill bars on scroll
-    const animateSkills = () => {
-        const skillBars = document.querySelectorAll('.skill-progress');
-        skillBars.forEach(bar => {
-            const width = bar.style.width;
-            bar.style.width = '0';
-            setTimeout(() => {
-                bar.style.width = width;
-                bar.style.transition = 'width 1.5s ease-in-out';
-            }, 500);
-        });
-    };
+const animateSkills = () => {
+    const skillBars = document.querySelectorAll('.skill-progress');
+    skillBars.forEach(bar => {
+        const width = bar.style.width;
+        bar.style.width = '0';
+        bar.style.transition = 'width 1.5s ease-in-out';
+        setTimeout(() => {
+            bar.style.width = width;
+        }, 100);
+    });
+};
 
     // Observe when skills section comes into view
     const skillsSection = document.getElementById('skills');
