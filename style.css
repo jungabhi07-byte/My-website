@@ -573,4 +573,62 @@ body {
 [data-theme="dark"] .contact-item,
 [data-theme="dark"] .stat-item,
 [data-theme="dark"] .tech-item,
-[data-theme
+[data-theme="dark"] .skill-item {
+    background: var(--light-bg);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+[data-theme="dark"] .skill-bar {
+    background: #495057;
+}
+
+[data-theme="dark"] .tech-item small {
+    color: #adb5bd;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .masthead-heading {
+        font-size: 2rem;
+    }
+    
+    .masthead-subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .about-stats {
+        grid-template-columns: 1fr;
+    }
+    
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .contact-info {
+        grid-template-columns: 1fr;
+    }
+    
+    .navbar-nav {
+        text-align: center;
+    }
+    
+    .skill-summary-card {
+        padding: 1.5rem;
+    }
+    
+    .skill-summary-number {
+        font-size: 2.5rem;
+    }
+    
+    .tech-item {
+        padding: 1rem;
+    }
+    
+    .tech-item i {
+        font-size: 1.5rem;
+    }
+}
