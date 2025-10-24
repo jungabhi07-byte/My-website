@@ -92,7 +92,7 @@ function initializeContactForm() {
                 showNotification('❌ Failed to send message. Please email me directly at jungabhi07@gmail.com', 'error');
             } finally {
                 // Reset button state
-                submitBtn.innerHTML = originalText;
+                submitBtn.innerHTML = '<i class="fas fa-paper-plane me-2"></i>Send Message';
                 submitBtn.disabled = false;
             }
         });
@@ -164,28 +164,44 @@ function initializeScrollAnimations() {
     });
 }
 
-// Counter animations
+// Counter animations for both about and skills sections
 function initializeCounters() {
-    const counters = document.querySelectorAll('.stat-number');
-    const statsSection = document.getElementById('about');
+    const aboutCounters = document.querySelectorAll('#about .stat-number');
+    const skillsCounters = document.querySelectorAll('#skills .skill-summary-number');
+    const allCounters = [...aboutCounters, ...skillsCounters];
+    
+    const aboutSection = document.getElementById('about');
+    const skillsSection = document.getElementById('skills');
     
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                counters.forEach(counter => {
-                    animateCounter(counter);
+                allCounters.forEach(counter => {
+                    if (isElementInViewport(counter)) {
+                        animateCounter(counter);
+                    }
                 });
-                observer.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.5 });
+    }, { threshold: 0.3 });
     
-    if (statsSection) {
-        observer.observe(statsSection);
-    }
+    if (aboutSection) observer.observe(aboutSection);
+    if (skillsSection) observer.observe(skillsSection);
+}
+
+function isElementInViewport(el) {
+    const rect = el.getBoundingClientRect();
+    return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
 }
 
 function animateCounter(element) {
+    if (element.classList.contains('animated')) return;
+    
     const target = parseInt(element.getAttribute('data-count'));
     let current = 0;
     const increment = target / 50;
@@ -194,10 +210,55 @@ function animateCounter(element) {
         if (current >= target) {
             element.textContent = target;
             clearInterval(timer);
+            element.classList.add('animated');
         } else {
             element.textContent = Math.floor(current);
         }
     }, 30);
 }
 
-// Notification
+// Notification system
+function showNotification(message, type = 'info') {
+    // Remove existing notifications
+    document.querySelectorAll('.custom-notification').forEach(notification => {
+        notification.remove();
+    });
+
+    const notification = document.createElement('div');
+    notification.className = `custom-notification notification-${type}`;
+    notification.textContent = message;
+    notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 1rem 2rem;
+        border-radius: 5px;
+        color: white;
+        font-weight: 500;
+        z-index: 10000;
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+        background: ${type === 'success' ? '#28a745' : type === 'error' ? '#dc3545' : '#17a2b8'};
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    `;
+    
+    document.body.appendChild(notification);
+    
+    // Animate in
+    setTimeout(() => {
+        notification.style.transform = 'translateX(0)';
+    }, 100);
+    
+    // Remove after 3 seconds
+    setTimeout(() => {
+        notification.style.transform = 'translateX(100%)';
+        setTimeout(() => {
+            if (notification.parentNode) {
+                notification.remove();
+            }
+        }, 300);
+    }, 3000);
+}
+
+// Make functions globally available
+window.toggleDarkMode = toggleDarkMode;
