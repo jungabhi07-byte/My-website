@@ -1352,3 +1352,92 @@ progress {
   .g-lg-0,
   .gx-lg-0 {
     --bs-gutter
+
+/* Custom Styles for Interactive Elements */
+.section-padding {
+    padding: 100px 0;
+}
+
+.skill-bar {
+    background: #e9ecef;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    overflow: hidden;
+}
+
+.skill-progress {
+    background: linear-gradient(45deg, #1cbbb4, #169690);
+    border-radius: 10px;
+    padding: 8px 15px;
+    color: white;
+    text-align: right;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: width 1.5s ease-in-out;
+}
+
+.project-card {
+    transition: all 0.3s ease;
+    border: none;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    height: 100%;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+
+.social-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 10px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.social-icon:hover {
+    transform: translateY(-5px) scale(1.1);
+    text-decoration: none;
+}
+
+.tech-tags {
+    margin: 15px 0;
+}
+
+.tech-tags .badge {
+    margin: 2px;
+    font-size: 0.75rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .section-padding {
+        padding: 60px 0;
+    }
+    
+    .social-icon {
+        width: 45px;
+        height: 45px;
+        margin: 0 5px;
+    }
+    
+    .masthead-avatar {
+        width: 200px !important;
+        height: 200px !important;
+    }
+}
+
+/* Loading state */
+body:not(.loaded) {
+    opacity: 0;
+}
+
+body.loaded {
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
