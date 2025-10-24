@@ -50,49 +50,34 @@ window.addEventListener('DOMContentLoaded', event => {
         });
     });
 
-    // Typewriter Effect
-    const typewriterElement = document.getElementById('typewriter');
-    if (typewriterElement) {
-        const texts = [
-            "Data Science Student",
-            "Machine Learning Enthusiast", 
-            "Data Analyst",
-            "Python Developer",
-            "AI Researcher"
-        ];
-        
-        let textIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-        let typingSpeed = 100;
+    // Simple Text Rotator - No Bouncing
+const typewriterElement = document.getElementById('typewriter');
+const texts = [
+    "Data Science Student",
+    "Machine Learning Enthusiast", 
+    "Data Analyst",
+    "Python Developer",
+    "AI Researcher"
+];
 
-        function typeWriter() {
-            const currentText = texts[textIndex];
-            
-            if (isDeleting) {
-                typewriterElement.textContent = currentText.substring(0, charIndex - 1);
-                charIndex--;
-                typingSpeed = 50;
-            } else {
-                typewriterElement.textContent = currentText.substring(0, charIndex + 1);
-                charIndex++;
-                typingSpeed = 100;
-            }
+let currentIndex = 0;
 
-            if (!isDeleting && charIndex === currentText.length) {
-                typingSpeed = 2000;
-                isDeleting = true;
-            } else if (isDeleting && charIndex === 0) {
-                isDeleting = false;
-                textIndex = (textIndex + 1) % texts.length;
-                typingSpeed = 500;
-            }
+function rotateText() {
+    typewriterElement.style.opacity = '0';
+    
+    setTimeout(() => {
+        currentIndex = (currentIndex + 1) % texts.length;
+        typewriterElement.textContent = texts[currentIndex];
+        typewriterElement.style.opacity = '1';
+        typewriterElement.style.transition = 'opacity 0.5s ease';
+    }, 500);
+    
+    // Change text every 3 seconds
+    setTimeout(rotateText, 3000);
+}
 
-            setTimeout(typeWriter, typingSpeed);
-        }
-
-        // Start typewriter
-        setTimeout(typeWriter, 1000);
+// Start the rotation
+setTimeout(rotateText, 2000);
     }
 
     // Smooth scrolling for navigation links
