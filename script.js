@@ -109,35 +109,45 @@ window.addEventListener('DOMContentLoaded', event => {
         });
     });
 
-    // Contact form submission
-    const contactForm = document.getElementById('contactForm');
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
+    // Contact form with Formspree
+const contactForm = document.getElementById('contactForm');
+if (contactForm) {
+    contactForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        const submitBtn = document.getElementById('submitBtn');
+        const originalText = submitBtn.innerHTML;
+        
+        // Show loading state
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+        submitBtn.disabled = true;
+        
+        try {
+            const formData = new FormData(this);
             
-            // Simple validation
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const subject = document.getElementById('subject').value;
-            const message = document.getElementById('message').value;
+            const response = await fetch(this.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
             
-            if (!name || !email || !subject || !message) {
-                showNotification('Please fill in all fields', 'error');
-                return;
+            if (response.ok) {
+                showNotification('✅ Message sent successfully! I\'ll reply to you soon.', 'success');
+                this.reset();
+            } else {
+                throw new Error('Form submission failed');
             }
-            
-            if (!validateEmail(email)) {
-                showNotification('Please enter a valid email address', 'error');
-                return;
-            }
-            
-            // Show success message
-            showNotification('Thank you for your message! I will get back to you soon.', 'success');
-            
-            // Reset form
-            this.reset();
-        });
-    }
+        } catch (error) {
+            showNotification('❌ Failed to send message. Please email me directly at jungabhi07@gmail.com', 'error');
+        } finally {
+            // Reset button state
+            submitBtn.innerHTML = '<i class="fas fa-paper-plane me-2"></i>Send Message';
+            submitBtn.disabled = false;
+        }
+    });
+}
 
     // Email validation function
     function validateEmail(email) {
