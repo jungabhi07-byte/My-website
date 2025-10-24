@@ -1,815 +1,379 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="Abhishek Budhathoki - Data Science Student at Kathmandu University" />
-        <meta name="author" content="Abhishek Budhathoki" />
-        <title>Abhishek Budhathoki | Data Scientist</title>
-        <!-- Favicon-->
-        <link rel="icon" type="x-icon" href="favicon.ico" />
-        <!-- Font Awesome icons (free version)-->
-        <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
-        <!-- Google fonts-->
-        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
-        <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="style.css" rel="stylesheet" />
-        <!-- Custom CSS -->
-        <style>
-            /* Custom Styles - Centered with Colorful Backgrounds */
-            body {
-                text-align: center;
-                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-                color: white;
-                font-family: 'Lato', sans-serif;
-            }
-
-            .section-padding {
-                padding: 100px 0;
-            }
-
-            /* Colorful Backgrounds for Sections */
-            .masthead.bg-primary {
-                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
-            }
-
-            .page-section.bg-light {
-                background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%) !important;
-                color: white;
-            }
-
-            .page-section.bg-white {
-                background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%) !important;
-                color: white;
-            }
-
-            .footer.bg-secondary {
-                background: linear-gradient(135deg, #434343 0%, #000000 100%) !important;
-            }
-
-            /* Center everything */
-            .container {
-                text-align: center;
-            }
-
-            /* Center all text elements */
-            h1, h2, h3, h4, h5, h6, p, .lead, .card-text {
-                text-align: center;
-            }
-
-            /* Skill bars */
-            .skill-bar {
-                background: rgba(255, 255, 255, 0.2);
-                border-radius: 10px;
-                margin-bottom: 15px;
-                overflow: hidden;
-                backdrop-filter: blur(10px);
-            }
-
-            .skill-progress {
-                background: linear-gradient(45deg, #667eea, #764ba2);
-                border-radius: 10px;
-                padding: 10px 15px;
-                color: white;
-                text-align: center;
-                font-weight: 600;
-                transition: width 1s ease-in-out;
-            }
-
-            .project-card {
-                transition: transform 0.3s ease;
-                border: none;
-                box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-                background: rgba(255, 255, 255, 0.1);
-                backdrop-filter: blur(10px);
-                border: 1px solid rgba(255, 255, 255, 0.2);
-                color: white;
-            }
-
-            .project-card:hover {
-                transform: translateY(-5px);
-            }
-
-            .social-icon {
-                width: 60px;
-                height: 60px;
-                border-radius: 50%;
-                display: inline-flex;
-                align-items: center;
-                justify-content: center;
-                margin: 0 10px;
-                transition: all 0.3s ease;
-                background: rgba(255, 255, 255, 0.2);
-                backdrop-filter: blur(10px);
-                border: 2px solid rgba(255, 255, 255, 0.3);
-            }
-
-            .social-icon:hover {
-                transform: translateY(-3px);
-                background: rgba(255, 255, 255, 0.3);
-            }
-
-            .nav-link {
-                font-weight: 500;
-                transition: all 0.3s ease;
-                text-align: center;
-            }
-
-            .nav-link:hover {
-                color: #ffd700 !important;
-                transform: translateY(-2px);
-            }
-
-            /* Center cards */
-            .card {
-                text-align: center;
-                background: rgba(255, 255, 255, 0.1);
-                backdrop-filter: blur(10px);
-                border: 1px solid rgba(255, 255, 255, 0.2);
-                color: white;
-            }
-
-            .card-body {
-                text-align: center;
-            }
-
-            .card .text-muted {
-                color: rgba(255, 255, 255, 0.8) !important;
-            }
-
-            /* Center form elements */
-            .form-control {
-                text-align: center;
-                background: rgba(255, 255, 255, 0.1);
-                border: 1px solid rgba(255, 255, 255, 0.3);
-                color: white;
-                backdrop-filter: blur(10px);
-            }
-
-            .form-control::placeholder {
-                color: rgba(255, 255, 255, 0.7);
-                text-align: center;
-            }
-
-            .form-control:focus {
-                background: rgba(255, 255, 255, 0.2);
-                border-color: rgba(255, 255, 255, 0.6);
-                color: white;
-            }
-
-            /* Dark mode styles */
-            .dark-mode {
-                background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%) !important;
-                color: #ffffff;
-            }
-
-            .dark-mode .bg-light {
-                background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%) !important;
-            }
-
-            .dark-mode .project-card {
-                background: rgba(255, 255, 255, 0.05);
-                color: #ffffff;
-            }
-
-            /* Ensure all text is white */
-            .text-dark {
-                color: white !important;
-            }
-
-            .text-muted {
-                color: rgba(255, 255, 255, 0.8) !important;
-            }
-
-            /* Responsive adjustments */
-            @media (max-width: 768px) {
-                .section-padding {
-                    padding: 60px 0;
-                }
-                
-                .social-icon {
-                    width: 50px;
-                    height: 50px;
-                    margin: 0 5px;
-                }
-                
-                .masthead-avatar {
-                    width: 200px !important;
-                    height: 200px !important;
-                }
-            }
-        </style>
-    </head>
-    <body id="page-top">
-        <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
-            <div class="container">
-                <a class="navbar-brand" href="#page-top">Abhishek Budhathoki</a>
-                <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                    Menu
-                    <i class="fas fa-bars"></i>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#about">About</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#skills">Skills</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#projects">Projects</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#contact">Contact</a></li>
-                        <li class="nav-item mx-0 mx-lg-1">
-                            <button class="btn btn-outline-light btn-sm mt-2" onclick="toggleDarkMode()">
-                                <i class="fas fa-moon"></i>
-                            </button>
-                        </li>
-                    </ul>
-                </div>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="Abhishek Budhathoki - Data Science Student at Kathmandu University" />
+    <meta name="author" content="Abhishek Budhathoki" />
+    <title>Abhishek Budhathoki | Data Scientist</title>
+    <!-- Favicon-->
+    <link rel="icon" type="x-icon" href="favicon.ico" />
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Core theme CSS -->
+    <link href="style.css" rel="stylesheet" />
+</head>
+<body id="page-top">
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="#page-top">Abhishek Budhathoki</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    <li class="nav-item">
+                        <button class="btn btn-outline-light btn-sm ms-2" onclick="toggleDarkMode()">
+                            <i class="fas fa-moon"></i>
+                        </button>
+                    </li>
+                </ul>
             </div>
-        </nav>
+        </div>
+    </nav>
 
-        <!-- Masthead/Header-->
-        <header class="masthead bg-primary text-white text-center">
-            <div class="container d-flex align-items-center flex-column">
-                <!-- Profile Image -->
-                <img class="masthead-avatar mb-5 rounded-circle" src="intro.jpg" alt="Abhishek Budhathoki" style="width: 250px; height: 250px; object-fit: cover; border: 5px solid white;" />
-                
-                <!-- Name & Title -->
-                <h1 class="masthead-heading text-uppercase mb-0">Abhishek Budhathoki</h1>
-                <div class="divider-custom divider-light">
-                    <div class="divider-custom-line"></div>
-                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                    <div class="divider-custom-line"></div>
-                </div>
-                
-                <!-- Subtitle with Typewriter Effect -->
-                <p class="masthead-subheading font-weight-light mb-4" id="typewriter">Data Science Student</p>
-                
-                <!-- Social Links -->
-                <div class="social-links mb-5">
-                    <a class="social-icon bg-white text-primary mx-1" href="https://www.youtube.com/@AbhishekBudhathoki7">
-                        <i class="fab fa-youtube"></i>
-                    </a>
-                    <a class="social-icon bg-white text-primary mx-1" href="https://www.facebook.com/abhishek.budhathoki.16804">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a class="social-icon bg-white text-primary mx-1" href="https://github.com/jungabhi07-byte">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a class="social-icon bg-white text-primary mx-1" href="https://www.kaggle.com">
-                        <i class="fab fa-kaggle"></i>
-                    </a>
-                </div>
-                
-                <!-- Call to Action -->
-                <a class="btn btn-xl btn-outline-light" href="#projects">
-                    <i class="fas fa-arrow-down me-2"></i>
-                    View My Work
+    <!-- Header -->
+    <header class="masthead bg-primary text-white">
+        <div class="container d-flex align-items-center flex-column">
+            <img class="masthead-avatar mb-4" src="intro.jpg" alt="Abhishek Budhathoki" />
+            <h1 class="masthead-heading mb-0">Abhishek Budhathoki</h1>
+            <div class="divider-custom divider-light">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+            <p class="masthead-subtitle">Data Science Student</p>
+            <div class="text-rotator">
+                <span class="rotating-text">Data Scientist</span>
+                <span class="rotating-text">Machine Learning Engineer</span>
+                <span class="rotating-text">AI Researcher</span>
+                <span class="rotating-text">Python Developer</span>
+            </div>
+            <div class="social-links mt-4">
+                <a href="https://www.youtube.com/@AbhishekBudhathoki7" class="social-link">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a href="https://www.facebook.com/abhishek.budhathoki.16804" class="social-link">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://github.com/jungabhi07-byte" class="social-link">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://www.linkedin.com" class="social-link">
+                    <i class="fab fa-linkedin-in"></i>
                 </a>
             </div>
-        </header>
-
-        <!-- About Section-->
-        <section class="page-section bg-light text-dark mb-0 section-padding" id="about">
-            <div class="container">
-                <!-- About Section Heading-->
-                <h2 class="page-section-heading text-center text-uppercase">About Me</h2>
-                <div class="divider-custom">
-                    <div class="divider-custom-line"></div>
-                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                    <div class="divider-custom-line"></div>
-                </div>
-                
-                <!-- About Section Content-->
-                <div class="row">
-                    <div class="col-lg-8 mx-auto">
-                        <p class="lead text-center">
-                            I'm a passionate Data Science student at Kathmandu University, dedicated to transforming complex data into meaningful insights. 
-                            I love exploring machine learning algorithms, statistical models, and data visualization techniques to solve real-world problems.
-                        </p>
-                        
-                        <div class="row mt-5 text-center">
-                            <div class="col-md-4 mb-4">
-                                <div class="card border-0">
-                                    <div class="card-body">
-                                        <i class="fas fa-graduation-cap fa-3x text-primary mb-3"></i>
-                                        <h5>Education</h5>
-                                        <p class="text-muted">B.Sc. Data Science<br>Kathmandu University</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4 mb-4">
-                                <div class="card border-0">
-                                    <div class="card-body">
-                                        <i class="fas fa-laptop-code fa-3x text-primary mb-3"></i>
-                                        <h5>Focus Areas</h5>
-                                        <p class="text-muted">Machine Learning<br>Data Analysis<br>AI Research</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4 mb-4">
-                                <div class="card border-0">
-                                    <div class="card-body">
-                                        <i class="fas fa-rocket fa-3x text-primary mb-3"></i>
-                                        <h5>Interests</h5>
-                                        <p class="text-muted">Open Source<br>Research<br>Competitions</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Skills Section-->
-        <section class="page-section bg-white text-dark section-padding" id="skills">
-            <div class="container">
-                <h2 class="page-section-heading text-center text-uppercase">Skills & Technologies</h2>
-                <div class="divider-custom">
-                    <div class="divider-custom-line"></div>
-                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                    <div class="divider-custom-line"></div>
-                </div>
-
-                <div class="row">
-                    <!-- Technical Skills -->
-                    <div class="col-lg-6 mb-5">
-                        <h4 class="text-center mb-4"><i class="fas fa-code me-2"></i>Technical Skills</h4>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 90%">Python - 90%</div>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 85%">Machine Learning - 85%</div>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 80%">Data Analysis - 80%</div>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 75%">Deep Learning - 75%</div>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 70%">SQL - 70%</div>
-                        </div>
-                    </div>
-
-                    <!-- Tools & Technologies -->
-                    <div class="col-lg-6">
-                        <h4 class="text-center mb-4"><i class="fas fa-tools me-2"></i>Tools & Technologies</h4>
-                        <div class="row text-center">
-                            <div class="col-6 mb-3">
-                                <div class="card border-0 h-100">
-                                    <div class="card-body">
-                                        <i class="fab fa-python fa-2x text-primary mb-2"></i>
-                                        <h6>Python</h6>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-6 mb-3">
-                                <div class="card border-0 h-100">
-                                    <div class="card-body">
-                                        <i class="fas fa-chart-line fa-2x text-primary mb-2"></i>
-                                        <h6>Pandas</h6>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-6 mb-3">
-                                <div class="card border-0 h-100">
-                                    <div class="card-body">
-                                        <i class="fas fa-brain fa-2x text-primary mb-2"></i>
-                                        <h6>TensorFlow</h6>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-6 mb-3">
-                                <div class="card border-0 h-100">
-                                    <div class="card-body">
-                                        <i class="fab fa-r-project fa-2x text-primary mb-2"></i>
-                                        <h6>R Programming</h6>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-6 mb-3">
-                                <div class="card border-0 h-100">
-                                    <div class="card-body">
-                                        <i class="fas fa-database fa-2x text-primary mb-2"></i>
-                                        <h6>SQL</h6>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-6 mb-3">
-                                <div class="card border-0 h-100">
-                                    <div class="card-body">
-                                        <i class="fab fa-git-alt fa-2x text-primary mb-2"></i>
-                                        <h6>Git</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Projects Section-->
-        <section class="page-section bg-light text-dark section-padding" id="projects">
-            <div class="container">
-                <h2 class="page-section-heading text-center text-uppercase">Data Science Projects</h2>
-                <div class="divider-custom">
-                    <div class="divider-custom-line"></div>
-                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                    <div class="divider-custom-line"></div>
-                </div>
-
-                <div class="row">
-                    <!-- Project 1 -->
-                    <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="project-card card h-100">
-                            <div class="card-body">
-                                <div class="text-center mb-4">
-                                    <i class="fas fa-chart-line fa-3x text-primary"></i>
-                                </div>
-                                <h5 class="card-title text-center">Stock Market Prediction</h5>
-                                <p class="card-text">Machine learning model to predict Nepal stock market trends using LSTM and sentiment analysis.</p>
-                                <div class="tech-tags">
-                                    <span class="badge bg-primary">Python</span>
-                                    <span class="badge bg-secondary">LSTM</span>
-                                    <span class="badge bg-info">NLP</span>
-                                </div>
-                            </div>
-                            <div class="card-footer bg-transparent border-0">
-                                <a href="https://github.com/jungabhi07-byte" class="btn btn-primary btn-sm">
-                                    <i class="fab fa-github me-1"></i> View Code
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Project 2 -->
-                    <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="project-card card h-100">
-                            <div class="card-body">
-                                <div class="text-center mb-4">
-                                    <i class="fas fa-lungs fa-3x text-primary"></i>
-                                </div>
-                                <h5 class="card-title text-center">COVID-19 Analysis</h5>
-                                <p class="card-text">Comprehensive analysis of COVID-19 spread patterns and predictive modeling for South Asia.</p>
-                                <div class="tech-tags">
-                                    <span class="badge bg-primary">Pandas</span>
-                                    <span class="badge bg-secondary">Matplotlib</span>
-                                    <span class="badge bg-success">Scikit-learn</span>
-                                </div>
-                            </div>
-                            <div class="card-footer bg-transparent border-0">
-                                <a href="https://github.com/jungabhi07-byte" class="btn btn-primary btn-sm">
-                                    <i class="fab fa-github me-1"></i> View Code
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Project 3 -->
-                    <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="project-card card h-100">
-                            <div class="card-body">
-                                <div class="text-center mb-4">
-                                    <i class="fas fa-seedling fa-3x text-primary"></i>
-                                </div>
-                                <h5 class="card-title text-center">Crop Yield Prediction</h5>
-                                <p class="card-text">Predicting agricultural yields in Nepal using satellite imagery and weather data analysis.</p>
-                                <div class="tech-tags">
-                                    <span class="badge bg-primary">Random Forest</span>
-                                    <span class="badge bg-secondary">OpenCV</span>
-                                    <span class="badge bg-warning">GeoPandas</span>
-                                </div>
-                            </div>
-                            <div class="card-footer bg-transparent border-0">
-                                <a href="https://github.com/jungabhi07-byte" class="btn btn-primary btn-sm">
-                                    <i class="fab fa-github me-1"></i> View Code
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section-->
-        <section class="page-section bg-white text-dark section-padding" id="contact">
-            <div class="container">
-                <h2 class="page-section-heading text-center text-uppercase">Contact Me</h2>
-                <div class="divider-custom">
-                    <div class="divider-custom-line"></div>
-                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                    <div class="divider-custom-line"></div>
-                </div>
-
-                <div class="row">
-                    <div class="col-lg-8 mx-auto">
-                        <div class="row text-center">
-                            <div class="col-md-4 mb-4">
-                                <div class="card border-0">
-                                    <div class="card-body">
-                                        <i class="fas fa-envelope fa-2x text-primary mb-3"></i>
-                                        <h5>Email</h5>
-                                        <p class="text-muted">jungabhi07@gmail.com</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4 mb-4">
-                                <div class="card border-0">
-                                    <div class="card-body">
-                                        <i class="fas fa-map-marker-alt fa-2x text-primary mb-3"></i>
-                                        <h5>Location</h5>
-                                        <p class="text-muted">Kathmandu University<br>Dhulikhel, Nepal</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4 mb-4">
-                                <div class="card border-0">
-                                    <div class="card-body">
-                                        <i class="fas fa-university fa-2x text-primary mb-3"></i>
-                                        <h5>Education</h5>
-                                        <p class="text-muted">B.Sc. Data Science<br>Kathmandu University</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Contact Form -->
-                        <form class="mt-5" id="contactForm" action="https://formspree.io/f/xqayrnjd" method="POST">
-                            <!-- Add these hidden fields -->
-                            <input type="hidden" name="_subject" value="New message from your portfolio website">
-                            <input type="hidden" name="_replyto" value="notification@formspree.io">
-                            
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group mb-3">
-                                        <input class="form-control" id="name" name="name" type="text" placeholder="Your Name *" required />
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group mb-3">
-                                        <input class="form-control" id="email" name="email" type="email" placeholder="Your Email *" required />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group mb-3">
-                                <input class="form-control" id="subject" name="subject" type="text" placeholder="Subject *" required />
-                            </div>
-                            <div class="form-group mb-3">
-                                <textarea class="form-control" id="message" name="message" placeholder="Your Message *" rows="5" required></textarea>
-                            </div>
-                            <div class="text-center">
-                                <button class="btn btn-primary btn-xl" type="submit" id="submitBtn">
-                                    <i class="fas fa-paper-plane me-2"></i>Send Message
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Footer-->
-        <footer class="footer text-center bg-secondary text-white">
-            <div class="container">
-                <div class="row">
-                    <!-- Footer Location-->
-                    <div class="col-lg-4 mb-5 mb-lg-0">
-                        <h4 class="text-uppercase mb-4">Location</h4>
-                        <p class="lead mb-0">
-                            Kathmandu University<br />
-                            Dhulikhel, Nepal
-                        </p>
-                    </div>
-                    <!-- Footer Social Icons-->
-                    <div class="col-lg-4 mb-5 mb-lg-0">
-                        <h4 class="text-uppercase mb-4">Around the Web</h4>
-                        <a class="btn btn-outline-light btn-social mx-1" href="https://www.youtube.com/@AbhishekBudhathoki7">
-                            <i class="fab fa-youtube"></i>
-                        </a>
-                        <a class="btn btn-outline-light btn-social mx-1" href="https://www.facebook.com/abhishek.budhathoki.16804">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a class="btn btn-outline-light btn-social mx-1" href="https://github.com/jungabhi07-byte">
-                            <i class="fab fa-github"></i>
-                        </a>
-                    </div>
-                    <!-- Footer About Text-->
-                    <div class="col-lg-4">
-                        <h4 class="text-uppercase mb-4">About This Site</h4>
-                        <p class="lead mb-0">
-                            Personal portfolio of Abhishek Budhathoki<br>
-                            Data Science Student at KU
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </footer>
-
-        <!-- Copyright Section-->
-        <div class="copyright py-4 text-center text-white bg-dark">
-            <div class="container"><small>Copyright &copy; 2025 Abhishek Budhathoki</small></div>
+            <a href="#projects" class="btn btn-lg btn-outline-light mt-4">
+                <i class="fas fa-arrow-down me-2"></i>View My Work
+            </a>
         </div>
+    </header>
 
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
-        
-        <!-- Custom JavaScript -->
-        <script>
-            // Typewriter Effect
-            const typewriterElement = document.getElementById('typewriter');
-            const texts = [
-                "Data Science Student",
-                "Machine Learning Enthusiast", 
-                "Data Analyst",
-                "Python Developer",
-                "AI Researcher"
-            ];
-            
-            let textIndex = 0;
-            let charIndex = 0;
-            let isDeleting = false;
-            let typingSpeed = 100;
+    <!-- About Section -->
+    <section id="about" class="page-section">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <p class="lead">
+                        I'm a passionate Data Science student at Kathmandu University, dedicated to transforming complex data into meaningful insights. 
+                        I love exploring machine learning algorithms, statistical models, and data visualization techniques to solve real-world problems.
+                    </p>
+                    <p>
+                        When I'm not coding or analyzing data, you can find me exploring new technologies, 
+                        contributing to open-source projects, or participating in data science competitions.
+                    </p>
+                    <a href="#contact" class="btn btn-primary mt-3">
+                        <i class="fas fa-paper-plane me-2"></i>Get In Touch
+                    </a>
+                </div>
+                <div class="col-lg-6">
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <div class="stat-number" data-count="15">0</div>
+                            <div class="stat-label">Projects Completed</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" data-count="8">0</div>
+                            <div class="stat-label">Technologies</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" data-count="2">0</div>
+                            <div class="stat-label">Years Experience</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-            function typeWriter() {
-                const currentText = texts[textIndex];
-                
-                if (isDeleting) {
-                    typewriterElement.textContent = currentText.substring(0, charIndex - 1);
-                    charIndex--;
-                    typingSpeed = 50;
-                } else {
-                    typewriterElement.textContent = currentText.substring(0, charIndex + 1);
-                    charIndex++;
-                    typingSpeed = 100;
-                }
+    <!-- Skills Section -->
+    <section id="skills" class="page-section bg-light">
+        <div class="container">
+            <h2 class="section-title">Skills & Technologies</h2>
+            <div class="row">
+                <div class="col-lg-6">
+                    <h4 class="skill-category-title">Technical Skills</h4>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>Python</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="90"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>Machine Learning</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="85"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>Data Analysis</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="80"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>Deep Learning</span>
+                            <span>75%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="75"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <h4 class="skill-category-title">Tools & Technologies</h4>
+                    <div class="skills-grid">
+                        <div class="tech-item">
+                            <i class="fab fa-python"></i>
+                            <span>Python</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Pandas</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-brain"></i>
+                            <span>TensorFlow</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fab fa-r-project"></i>
+                            <span>R Programming</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-database"></i>
+                            <span>SQL</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fab fa-git-alt"></i>
+                            <span>Git</span>
+                        </div>
+                    </div>
+                    <a href="#projects" class="btn btn-outline-primary mt-4">
+                        <i class="fas fa-laptop-code me-2"></i>View Projects
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                if (!isDeleting && charIndex === currentText.length) {
-                    typingSpeed = 2000;
-                    isDeleting = true;
-                } else if (isDeleting && charIndex === 0) {
-                    isDeleting = false;
-                    textIndex = (textIndex + 1) % texts.length;
-                    typingSpeed = 500;
-                }
+    <!-- Projects Section -->
+    <section id="projects" class="page-section">
+        <div class="container">
+            <h2 class="section-title">My Projects</h2>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="project-content">
+                            <h3>Stock Market Prediction</h3>
+                            <p>Machine learning model to predict Nepal stock market trends using LSTM and sentiment analysis.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">LSTM</span>
+                                <span class="tech-tag">NLP</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/jungabhi07-byte" class="btn btn-sm btn-outline-primary">
+                                    <i class="fab fa-github me-1"></i>Code
+                                </a>
+                                <a href="#" class="btn btn-sm btn-primary">
+                                    <i class="fas fa-external-link-alt me-1"></i>Live Demo
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <i class="fas fa-lungs"></i>
+                        </div>
+                        <div class="project-content">
+                            <h3>COVID-19 Analysis</h3>
+                            <p>Comprehensive analysis of COVID-19 spread patterns and predictive modeling for South Asia.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Pandas</span>
+                                <span class="tech-tag">Matplotlib</span>
+                                <span class="tech-tag">Scikit-learn</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/jungabhi07-byte" class="btn btn-sm btn-outline-primary">
+                                    <i class="fab fa-github me-1"></i>Code
+                                </a>
+                                <a href="#" class="btn btn-sm btn-primary">
+                                    <i class="fas fa-external-link-alt me-1"></i>Live Demo
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <i class="fas fa-seedling"></i>
+                        </div>
+                        <div class="project-content">
+                            <h3>Crop Yield Prediction</h3>
+                            <p>Predicting agricultural yields in Nepal using satellite imagery and weather data analysis.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Random Forest</span>
+                                <span class="tech-tag">OpenCV</span>
+                                <span class="tech-tag">GeoPandas</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/jungabhi07-byte" class="btn btn-sm btn-outline-primary">
+                                    <i class="fab fa-github me-1"></i>Code
+                                </a>
+                                <a href="#" class="btn btn-sm btn-primary">
+                                    <i class="fas fa-external-link-alt me-1"></i>Live Demo
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <a href="https://github.com/jungabhi07-byte" class="btn btn-primary">
+                    <i class="fab fa-github me-2"></i>View All Projects
+                </a>
+            </div>
+        </div>
+    </section>
 
-                setTimeout(typeWriter, typingSpeed);
-            }
+    <!-- Contact Section -->
+    <section id="contact" class="page-section bg-light">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h5>Email</h5>
+                                <p>jungabhi07@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h5>Location</h5>
+                                <p>Kathmandu University, Dhulikhel</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-university"></i>
+                            <div>
+                                <h5>Education</h5>
+                                <p>B.Sc. Data Science, KU</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <form class="contact-form" id="contactForm" action="https://formspree.io/f/xqayrnjd" method="POST">
+                        <input type="hidden" name="_subject" value="New message from portfolio">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="email" name="email" class="form-control" placeholder="Your Email" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="subject" class="form-control" placeholder="Subject" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea name="message" class="form-control" placeholder="Your Message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">
+                            <i class="fas fa-paper-plane me-2"></i>Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
 
-            // Start typewriter when page loads
-            document.addEventListener('DOMContentLoaded', function() {
-                setTimeout(typeWriter, 1000);
-                
-                // Smooth scrolling for navigation links
-                document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                    anchor.addEventListener('click', function (e) {
-                        e.preventDefault();
-                        const target = document.querySelector(this.getAttribute('href'));
-                        if (target) {
-                            target.scrollIntoView({
-                                behavior: 'smooth',
-                                block: 'start'
-                            });
-                        }
-                    });
-                });
+    <!-- Footer -->
+    <footer class="footer bg-dark text-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <h5>Location</h5>
+                    <p>Kathmandu University<br>Dhulikhel, Nepal</p>
+                </div>
+                <div class="col-lg-4">
+                    <h5>Connect With Me</h5>
+                    <div class="social-links">
+                        <a href="https://www.youtube.com/@AbhishekBudhathoki7"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.facebook.com/abhishek.budhathoki.16804"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://github.com/jungabhi07-byte"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <h5>About This Site</h5>
+                    <p>Personal portfolio of Abhishek Budhathoki<br>Data Science Student</p>
+                </div>
+            </div>
+            <hr>
+            <div class="text-center">
+                <p>&copy; 2024 Abhishek Budhathoki. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 
-                // Contact form submission with Formspree
-                const contactForm = document.getElementById('contactForm');
-                if (contactForm) {
-                    contactForm.addEventListener('submit', async function(e) {
-                        e.preventDefault();
-                        
-                        const submitBtn = document.getElementById('submitBtn');
-                        const originalText = submitBtn.innerHTML;
-                        
-                        // Show loading state
-                        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-                        submitBtn.disabled = true;
-                        
-                        try {
-                            const formData = new FormData(this);
-                            
-                            const response = await fetch(this.action, {
-                                method: 'POST',
-                                body: formData,
-                                headers: {
-                                    'Accept': 'application/json'
-                                }
-                            });
-                            
-                            if (response.ok) {
-                                showNotification('✅ Message sent successfully! I\'ll reply to you soon.', 'success');
-                                this.reset();
-                            } else {
-                                throw new Error('Form submission failed');
-                            }
-                        } catch (error) {
-                            showNotification('❌ Failed to send message. Please email me directly at jungabhi07@gmail.com', 'error');
-                        } finally {
-                            // Reset button state
-                            submitBtn.innerHTML = '<i class="fas fa-paper-plane me-2"></i>Send Message';
-                            submitBtn.disabled = false;
-                        }
-                    });
-                }
-
-                // Animate skill bars on scroll
-                const animateSkills = () => {
-                    const skillBars = document.querySelectorAll('.skill-progress');
-                    skillBars.forEach(bar => {
-                        const width = bar.style.width;
-                        bar.style.width = '0';
-                        setTimeout(() => {
-                            bar.style.width = width;
-                        }, 500);
-                    });
-                };
-
-                // Observe when skills section comes into view
-                const skillsSection = document.getElementById('skills');
-                if (skillsSection) {
-                    const observer = new IntersectionObserver((entries) => {
-                        entries.forEach(entry => {
-                            if (entry.isIntersecting) {
-                                animateSkills();
-                                observer.unobserve(entry.target);
-                            }
-                        });
-                    }, { threshold: 0.5 });
-
-                    observer.observe(skillsSection);
-                }
-            });
-
-            // Notification System
-            function showNotification(message, type = 'info') {
-                // Remove existing notifications
-                document.querySelectorAll('.custom-notification').forEach(notification => {
-                    notification.remove();
-                });
-
-                const notification = document.createElement('div');
-                notification.className = `custom-notification notification-${type}`;
-                notification.textContent = message;
-                notification.style.cssText = `
-                    position: fixed;
-                    top: 20px;
-                    right: 20px;
-                    padding: 1rem 2rem;
-                    border-radius: 5px;
-                    color: white;
-                    font-weight: 500;
-                    z-index: 10000;
-                    transform: translateX(100%);
-                    transition: transform 0.3s ease;
-                    background: ${type === 'success' ? '#28a745' : type === 'error' ? '#dc3545' : '#17a2b8'};
-                    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-                `;
-                
-                document.body.appendChild(notification);
-                
-                // Animate in
-                setTimeout(() => {
-                    notification.style.transform = 'translateX(0)';
-                }, 100);
-                
-                // Remove after 3 seconds
-                setTimeout(() => {
-                    notification.style.transform = 'translateX(100%)';
-                    setTimeout(() => {
-                        if (notification.parentNode) {
-                            notification.remove();
-                        }
-                    }, 300);
-                }, 3000);
-            }
-
-            // Dark Mode Toggle
-            function toggleDarkMode() {
-                document.body.classList.toggle('dark-mode');
-                const darkModeBtn = document.querySelector('[onclick="toggleDarkMode()"]');
-                const icon = darkModeBtn.querySelector('i');
-                
-                if (document.body.classList.contains('dark-mode')) {
-                    icon.className = 'fas fa-sun';
-                    localStorage.setItem('darkMode', 'enabled');
-                } else {
-                    icon.className = 'fas fa-moon';
-                    localStorage.setItem('darkMode', 'disabled');
-                }
-            }
-
-            // Check for saved dark mode preference
-            if (localStorage.getItem('darkMode') === 'enabled') {
-                document.body.classList.add('dark-mode');
-                const darkModeBtn = document.querySelector('[onclick="toggleDarkMode()"]');
-                if (darkModeBtn) {
-                    darkModeBtn.querySelector('i').className = 'fas fa-sun';
-                }
-            }
-        </script>
-    </body>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+</body>
 </html>
