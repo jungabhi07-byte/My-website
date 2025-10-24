@@ -17,77 +17,187 @@
         <link href="style.css" rel="stylesheet" />
         <!-- Custom CSS -->
         <style>
-            /* Custom Styles */
+            /* Custom Styles - Centered with Colorful Backgrounds */
+            body {
+                text-align: center;
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                color: white;
+                font-family: 'Lato', sans-serif;
+            }
+
             .section-padding {
                 padding: 100px 0;
             }
-            
-            .bg-gradient {
-                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+
+            /* Colorful Backgrounds for Sections */
+            .masthead.bg-primary {
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
             }
-            
+
+            .page-section.bg-light {
+                background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%) !important;
+                color: white;
+            }
+
+            .page-section.bg-white {
+                background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%) !important;
+                color: white;
+            }
+
+            .footer.bg-secondary {
+                background: linear-gradient(135deg, #434343 0%, #000000 100%) !important;
+            }
+
+            /* Center everything */
+            .container {
+                text-align: center;
+            }
+
+            /* Center all text elements */
+            h1, h2, h3, h4, h5, h6, p, .lead, .card-text {
+                text-align: center;
+            }
+
+            /* Skill bars */
             .skill-bar {
-                background: #e9ecef;
+                background: rgba(255, 255, 255, 0.2);
                 border-radius: 10px;
                 margin-bottom: 15px;
+                overflow: hidden;
+                backdrop-filter: blur(10px);
             }
-            
+
             .skill-progress {
                 background: linear-gradient(45deg, #667eea, #764ba2);
                 border-radius: 10px;
-                padding: 5px;
+                padding: 10px 15px;
                 color: white;
-                text-align: right;
+                text-align: center;
+                font-weight: 600;
                 transition: width 1s ease-in-out;
             }
-            
+
             .project-card {
                 transition: transform 0.3s ease;
                 border: none;
-                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+                box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+                background: rgba(255, 255, 255, 0.1);
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                color: white;
             }
-            
+
             .project-card:hover {
-                transform: translateY(-10px);
+                transform: translateY(-5px);
             }
-            
+
             .social-icon {
-                width: 50px;
-                height: 50px;
+                width: 60px;
+                height: 60px;
                 border-radius: 50%;
                 display: inline-flex;
                 align-items: center;
                 justify-content: center;
                 margin: 0 10px;
                 transition: all 0.3s ease;
+                background: rgba(255, 255, 255, 0.2);
+                backdrop-filter: blur(10px);
+                border: 2px solid rgba(255, 255, 255, 0.3);
             }
-            
+
             .social-icon:hover {
-                transform: translateY(-5px);
+                transform: translateY(-3px);
+                background: rgba(255, 255, 255, 0.3);
             }
-            
+
             .nav-link {
                 font-weight: 500;
-                transition: color 0.3s ease;
+                transition: all 0.3s ease;
+                text-align: center;
             }
-            
+
             .nav-link:hover {
-                color: #667eea !important;
+                color: #ffd700 !important;
+                transform: translateY(-2px);
             }
-            
+
+            /* Center cards */
+            .card {
+                text-align: center;
+                background: rgba(255, 255, 255, 0.1);
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                color: white;
+            }
+
+            .card-body {
+                text-align: center;
+            }
+
+            .card .text-muted {
+                color: rgba(255, 255, 255, 0.8) !important;
+            }
+
+            /* Center form elements */
+            .form-control {
+                text-align: center;
+                background: rgba(255, 255, 255, 0.1);
+                border: 1px solid rgba(255, 255, 255, 0.3);
+                color: white;
+                backdrop-filter: blur(10px);
+            }
+
+            .form-control::placeholder {
+                color: rgba(255, 255, 255, 0.7);
+                text-align: center;
+            }
+
+            .form-control:focus {
+                background: rgba(255, 255, 255, 0.2);
+                border-color: rgba(255, 255, 255, 0.6);
+                color: white;
+            }
+
             /* Dark mode styles */
             .dark-mode {
-                background-color: #1a1a1a;
+                background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%) !important;
                 color: #ffffff;
             }
-            
+
             .dark-mode .bg-light {
-                background-color: #2d2d2d !important;
+                background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%) !important;
             }
-            
+
             .dark-mode .project-card {
-                background-color: #2d2d2d;
+                background: rgba(255, 255, 255, 0.05);
                 color: #ffffff;
+            }
+
+            /* Ensure all text is white */
+            .text-dark {
+                color: white !important;
+            }
+
+            .text-muted {
+                color: rgba(255, 255, 255, 0.8) !important;
+            }
+
+            /* Responsive adjustments */
+            @media (max-width: 768px) {
+                .section-padding {
+                    padding: 60px 0;
+                }
+                
+                .social-icon {
+                    width: 50px;
+                    height: 50px;
+                    margin: 0 5px;
+                }
+                
+                .masthead-avatar {
+                    width: 200px !important;
+                    height: 200px !important;
+                }
             }
         </style>
     </head>
@@ -144,7 +254,6 @@
                     <a class="social-icon bg-white text-primary mx-1" href="https://github.com/jungabhi07-byte">
                         <i class="fab fa-github"></i>
                     </a>
-                    
                     <a class="social-icon bg-white text-primary mx-1" href="https://www.kaggle.com">
                         <i class="fab fa-kaggle"></i>
                     </a>
@@ -424,38 +533,37 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Contact Form -->
-<form class="mt-5" id="contactForm" action="https://formspree.io/f/xqayrnjd" method="POST">
-    <!-- Add these hidden fields -->
-    <input type="hidden" name="_subject" value="New message from your portfolio website">
-    <input type="hidden" name="_replyto" value="notification@formspree.io">
-    
-    <div class="row">
-        <div class="col-md-6">
-            <div class="form-group mb-3">
-                <input class="form-control" id="name" name="name" type="text" placeholder="Your Name *" required />
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="form-group mb-3">
-                <input class="form-control" id="email" name="email" type="email" placeholder="Your Email *" required />
-            </div>
-        </div>
-    </div>
-    <div class="form-group mb-3">
-        <input class="form-control" id="subject" name="subject" type="text" placeholder="Subject *" required />
-    </div>
-    <div class="form-group mb-3">
-        <textarea class="form-control" id="message" name="message" placeholder="Your Message *" rows="5" required></textarea>
-    </div>
-    <div class="text-center">
-        <button class="btn btn-primary btn-xl" type="submit" id="submitBtn">
-            <i class="fas fa-paper-plane me-2"></i>Send Message
-        </button>
-    </div>
-</form>
 
-                        
+                        <!-- Contact Form -->
+                        <form class="mt-5" id="contactForm" action="https://formspree.io/f/xqayrnjd" method="POST">
+                            <!-- Add these hidden fields -->
+                            <input type="hidden" name="_subject" value="New message from your portfolio website">
+                            <input type="hidden" name="_replyto" value="notification@formspree.io">
+                            
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group mb-3">
+                                        <input class="form-control" id="name" name="name" type="text" placeholder="Your Name *" required />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group mb-3">
+                                        <input class="form-control" id="email" name="email" type="email" placeholder="Your Email *" required />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group mb-3">
+                                <input class="form-control" id="subject" name="subject" type="text" placeholder="Subject *" required />
+                            </div>
+                            <div class="form-group mb-3">
+                                <textarea class="form-control" id="message" name="message" placeholder="Your Message *" rows="5" required></textarea>
+                            </div>
+                            <div class="text-center">
+                                <button class="btn btn-primary btn-xl" type="submit" id="submitBtn">
+                                    <i class="fas fa-paper-plane me-2"></i>Send Message
+                                </button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -485,7 +593,6 @@
                         <a class="btn btn-outline-light btn-social mx-1" href="https://github.com/jungabhi07-byte">
                             <i class="fab fa-github"></i>
                         </a>
-                    
                     </div>
                     <!-- Footer About Text-->
                     <div class="col-lg-4">
@@ -569,13 +676,43 @@
                     });
                 });
 
-                // Contact form submission
+                // Contact form submission with Formspree
                 const contactForm = document.getElementById('contactForm');
                 if (contactForm) {
-                    contactForm.addEventListener('submit', function(e) {
+                    contactForm.addEventListener('submit', async function(e) {
                         e.preventDefault();
-                        alert('Thank you for your message! I will get back to you soon.');
-                        this.reset();
+                        
+                        const submitBtn = document.getElementById('submitBtn');
+                        const originalText = submitBtn.innerHTML;
+                        
+                        // Show loading state
+                        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+                        submitBtn.disabled = true;
+                        
+                        try {
+                            const formData = new FormData(this);
+                            
+                            const response = await fetch(this.action, {
+                                method: 'POST',
+                                body: formData,
+                                headers: {
+                                    'Accept': 'application/json'
+                                }
+                            });
+                            
+                            if (response.ok) {
+                                showNotification('✅ Message sent successfully! I\'ll reply to you soon.', 'success');
+                                this.reset();
+                            } else {
+                                throw new Error('Form submission failed');
+                            }
+                        } catch (error) {
+                            showNotification('❌ Failed to send message. Please email me directly at jungabhi07@gmail.com', 'error');
+                        } finally {
+                            // Reset button state
+                            submitBtn.innerHTML = '<i class="fas fa-paper-plane me-2"></i>Send Message';
+                            submitBtn.disabled = false;
+                        }
                     });
                 }
 
@@ -606,6 +743,49 @@
                     observer.observe(skillsSection);
                 }
             });
+
+            // Notification System
+            function showNotification(message, type = 'info') {
+                // Remove existing notifications
+                document.querySelectorAll('.custom-notification').forEach(notification => {
+                    notification.remove();
+                });
+
+                const notification = document.createElement('div');
+                notification.className = `custom-notification notification-${type}`;
+                notification.textContent = message;
+                notification.style.cssText = `
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    padding: 1rem 2rem;
+                    border-radius: 5px;
+                    color: white;
+                    font-weight: 500;
+                    z-index: 10000;
+                    transform: translateX(100%);
+                    transition: transform 0.3s ease;
+                    background: ${type === 'success' ? '#28a745' : type === 'error' ? '#dc3545' : '#17a2b8'};
+                    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+                `;
+                
+                document.body.appendChild(notification);
+                
+                // Animate in
+                setTimeout(() => {
+                    notification.style.transform = 'translateX(0)';
+                }, 100);
+                
+                // Remove after 3 seconds
+                setTimeout(() => {
+                    notification.style.transform = 'translateX(100%)';
+                    setTimeout(() => {
+                        if (notification.parentNode) {
+                            notification.remove();
+                        }
+                    }, 300);
+                }, 3000);
+            }
 
             // Dark Mode Toggle
             function toggleDarkMode() {
