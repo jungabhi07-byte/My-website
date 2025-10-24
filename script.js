@@ -51,33 +51,34 @@ window.addEventListener('DOMContentLoaded', event => {
     });
 
     // Simple Text Rotator - No Bouncing
-const typewriterElement = document.getElementById('typewriter');
-const texts = [
-    "Data Science Student",
-    "Machine Learning Enthusiast", 
-    "Data Analyst",
-    "Python Developer",
-    "AI Researcher"
-];
+    const typewriterElement = document.getElementById('typewriter');
+    if (typewriterElement) {
+        const texts = [
+            "Data Science Student",
+            "Machine Learning Enthusiast", 
+            "Data Analyst",
+            "Python Developer",
+            "AI Researcher"
+        ];
 
-let currentIndex = 0;
+        let currentIndex = 0;
 
-function rotateText() {
-    typewriterElement.style.opacity = '0';
-    
-    setTimeout(() => {
-        currentIndex = (currentIndex + 1) % texts.length;
-        typewriterElement.textContent = texts[currentIndex];
-        typewriterElement.style.opacity = '1';
-        typewriterElement.style.transition = 'opacity 0.5s ease';
-    }, 500);
-    
-    // Change text every 3 seconds
-    setTimeout(rotateText, 3000);
-}
+        function rotateText() {
+            typewriterElement.style.opacity = '0';
+            
+            setTimeout(() => {
+                currentIndex = (currentIndex + 1) % texts.length;
+                typewriterElement.textContent = texts[currentIndex];
+                typewriterElement.style.opacity = '1';
+                typewriterElement.style.transition = 'opacity 0.5s ease';
+            }, 500);
+            
+            // Change text every 3 seconds
+            setTimeout(rotateText, 3000);
+        }
 
-// Start the rotation
-setTimeout(rotateText, 2000);
+        // Start the rotation
+        setTimeout(rotateText, 2000);
     }
 
     // Smooth scrolling for navigation links
@@ -95,44 +96,44 @@ setTimeout(rotateText, 2000);
     });
 
     // Contact form with Formspree
-const contactForm = document.getElementById('contactForm');
-if (contactForm) {
-    contactForm.addEventListener('submit', async function(e) {
-        e.preventDefault();
-        
-        const submitBtn = document.getElementById('submitBtn');
-        const originalText = submitBtn.innerHTML;
-        
-        // Show loading state
-        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-        submitBtn.disabled = true;
-        
-        try {
-            const formData = new FormData(this);
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
             
-            const response = await fetch(this.action, {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'Accept': 'application/json'
+            const submitBtn = document.getElementById('submitBtn');
+            const originalText = submitBtn.innerHTML;
+            
+            // Show loading state
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            submitBtn.disabled = true;
+            
+            try {
+                const formData = new FormData(this);
+                
+                const response = await fetch(this.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    showNotification('✅ Message sent successfully! I\'ll reply to you soon.', 'success');
+                    this.reset();
+                } else {
+                    throw new Error('Form submission failed');
                 }
-            });
-            
-            if (response.ok) {
-                showNotification('✅ Message sent successfully! I\'ll reply to you soon.', 'success');
-                this.reset();
-            } else {
-                throw new Error('Form submission failed');
+            } catch (error) {
+                showNotification('❌ Failed to send message. Please email me directly at jungabhi07@gmail.com', 'error');
+            } finally {
+                // Reset button state
+                submitBtn.innerHTML = '<i class="fas fa-paper-plane me-2"></i>Send Message';
+                submitBtn.disabled = false;
             }
-        } catch (error) {
-            showNotification('❌ Failed to send message. Please email me directly at jungabhi07@gmail.com', 'error');
-        } finally {
-            // Reset button state
-            submitBtn.innerHTML = '<i class="fas fa-paper-plane me-2"></i>Send Message';
-            submitBtn.disabled = false;
-        }
-    });
-}
+        });
+    }
 
     // Email validation function
     function validateEmail(email) {
@@ -184,17 +185,17 @@ if (contactForm) {
     }
 
     // Animate skill bars on scroll
-const animateSkills = () => {
-    const skillBars = document.querySelectorAll('.skill-progress');
-    skillBars.forEach(bar => {
-        const width = bar.style.width;
-        bar.style.width = '0';
-        bar.style.transition = 'width 1.5s ease-in-out';
-        setTimeout(() => {
-            bar.style.width = width;
-        }, 100);
-    });
-};
+    const animateSkills = () => {
+        const skillBars = document.querySelectorAll('.skill-progress');
+        skillBars.forEach(bar => {
+            const width = bar.style.width;
+            bar.style.width = '0';
+            bar.style.transition = 'width 1.5s ease-in-out';
+            setTimeout(() => {
+                bar.style.width = width;
+            }, 100);
+        });
+    };
 
     // Observe when skills section comes into view
     const skillsSection = document.getElementById('skills');
