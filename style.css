@@ -137,13 +137,15 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 2rem;
 }
 
-/* Social Buttons */
+/* Fix for Social Buttons */
 .social-buttons {
     display: flex;
     justify-content: center;
     gap: 1.5rem;
     margin: 2rem 0;
     flex-wrap: wrap;
+    z-index: 10;
+    position: relative;
 }
 
 .btn-social {
@@ -156,6 +158,9 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 600;
     transition: all 0.3s ease;
     border: 2px solid transparent;
+    cursor: pointer;
+    position: relative;
+    z-index: 10;
 }
 
 .btn-social.youtube {
@@ -177,6 +182,38 @@ h1, h2, h3, h4, h5, h6 {
     transform: translateY(-3px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     border-color: rgba(255, 255, 255, 0.3);
+    text-decoration: none;
+    color: white;
+}
+
+/* Fix for View My Stats button */
+.view-stats-btn {
+    position: relative;
+    z-index: 10;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.view-stats-btn:hover {
+    color: white;
+    text-decoration: none;
+}
+
+/* Ensure links are clickable */
+a, .btn {
+    cursor: pointer;
+    position: relative;
+    z-index: 10;
+}
+
+/* Remove any potential overlays blocking clicks */
+.masthead::before {
+    pointer-events: none;
+}
+
+/* Fix for smooth scrolling */
+html {
+    scroll-behavior: smooth;
 }
 
 /* Statistics Section */
