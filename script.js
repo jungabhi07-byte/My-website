@@ -26,10 +26,10 @@ function animateSkillBars() {
     });
 }
 
-// Initialize animations when page loads
+// Initialize when page loads
 document.addEventListener('DOMContentLoaded', function() {
     // Start counter animation after a delay
-    setTimeout(animateCounters, 1000);
+    setTimeout(animateCounters, 500);
     
     // Set up intersection observer for skill bars
     const skillsObserver = new IntersectionObserver((entries) => {
@@ -65,48 +65,44 @@ document.addEventListener('DOMContentLoaded', function() {
         const navbar = document.getElementById('mainNav');
         if (window.scrollY > 100) {
             navbar.style.backgroundColor = 'var(--dark-green)';
+            navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
         } else {
             navbar.style.backgroundColor = '';
+            navbar.style.boxShadow = 'none';
         }
     });
 
-    // Contact form handling
+    // Formspree form handling with loading state
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
+        contactForm.addEventListener('submit', function() {
+            // Add loading state
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Sending...';
+            submitBtn.disabled = true;
             
-            // Get form data
-            const formData = new FormData(contactForm);
-            
-            // Simple validation
-            let isValid = true;
-            contactForm.querySelectorAll('[required]').forEach(field => {
-                if (!field.value.trim()) {
-                    isValid = false;
-                    field.classList.add('is-invalid');
-                } else {
-                    field.classList.remove('is-invalid');
-                }
-            });
-
-            if (isValid) {
-                // Show loading state
-                const submitBtn = contactForm.querySelector('button[type="submit"]');
-                const originalText = submitBtn.innerHTML;
-                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Sending...';
-                submitBtn.disabled = true;
-
-                // Simulate form submission (replace with actual form submission)
-                setTimeout(() => {
-                    alert('Thank you for your message! I\'ll get back to you soon.');
-                    contactForm.reset();
-                    submitBtn.innerHTML = originalText;
-                    submitBtn.disabled = false;
-                }, 2000);
-            }
+            // Formspree will handle the rest and redirect to thank you page
+            setTimeout(() => {
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }, 3000);
         });
     }
+
+    // Scroll to top button functionality
+    const scrollButton = document.querySelector('.scroll-to-top');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            scrollButton.style.display = 'flex';
+        } else {
+            scrollButton.style.display = 'none';
+        }
+    });
+
+    scrollButton.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
 });
 
 // Dark mode toggle function
@@ -120,55 +116,14 @@ function toggleDarkMode() {
     if (document.body.classList.contains('dark-mode')) {
         icon.classList.remove('fa-moon');
         icon.classList.add('fa-sun');
-        // Add dark mode styles dynamically
+        // Add dark mode styles
         document.documentElement.style.setProperty('--light-green', '#1a1a1a');
-        document.documentElement.style.setProperty('--primary-green', '#4caf50');
+        document.documentElement.style.setProperty('--text-dark', '#f8f9fa');
     } else {
         icon.classList.remove('fa-sun');
         icon.classList.add('fa-moon');
         // Reset to light mode
         document.documentElement.style.setProperty('--light-green', '#e8f5e8');
-        document.documentElement.style.setProperty('--primary-green', '#2e7d32');
+        document.documentElement.style.setProperty('--text-dark', '#333');
     }
 }
-
-// Add loading animation
-window.addEventListener('load', function() {
-    document.body.classList.add('loaded');
-});
-
-// Add scroll to top button
-function createScrollToTopButton() {
-    const scrollBtn = document.createElement('button');
-    scrollBtn.innerHTML = '<i class="fas fa-chevron-up"></i>';
-    scrollBtn.className = 'btn btn-primary scroll-to-top';
-    scrollBtn.style.cssText = `
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        z-index: 1000;
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        display: none;
-        align-items: center;
-        justify-content: center;
-    `;
-    
-    scrollBtn.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-    
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 300) {
-            scrollBtn.style.display = 'flex';
-        } else {
-            scrollBtn.style.display = 'none';
-        }
-    });
-    
-    document.body.appendChild(scrollBtn);
-}
-
-// Initialize scroll to top button
-createScrollToTopButton();
