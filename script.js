@@ -46,16 +46,20 @@ document.addEventListener('DOMContentLoaded', function() {
         skillsObserver.observe(skillsSection);
     }
 
-    // Smooth scrolling for navigation links
+    // Smooth scrolling for navigation links - FIXED VERSION
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
+            // Only prevent default for internal links that actually exist
+            const targetId = this.getAttribute('href');
+            if (targetId !== '#') {
+                e.preventDefault();
+                const target = document.querySelector(targetId);
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
             }
         });
     });
@@ -75,14 +79,15 @@ document.addEventListener('DOMContentLoaded', function() {
     // Formspree form handling with loading state
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
-        contactForm.addEventListener('submit', function() {
+        contactForm.addEventListener('submit', function(e) {
             // Add loading state
             const submitBtn = this.querySelector('button[type="submit"]');
             const originalText = submitBtn.innerHTML;
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Sending...';
             submitBtn.disabled = true;
             
-            // Formspree will handle the rest and redirect to thank you page
+            // Allow Formspree to handle the submission
+            // Remove this timeout if you want Formspree to handle everything
             setTimeout(() => {
                 submitBtn.innerHTML = originalText;
                 submitBtn.disabled = false;
@@ -103,6 +108,10 @@ document.addEventListener('DOMContentLoaded', function() {
     scrollButton.addEventListener('click', () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
+
+    // Debug: Check if buttons are clickable
+    console.log('Social buttons initialized:', document.querySelectorAll('.btn-social').length);
+    console.log('View Stats button:', document.querySelector('.view-stats-btn'));
 });
 
 // Dark mode toggle function
@@ -127,3 +136,12 @@ function toggleDarkMode() {
         document.documentElement.style.setProperty('--text-dark', '#333');
     }
 }
+
+// Force enable pointer events for all interactive elements
+document.addEventListener('DOMContentLoaded', function() {
+    const interactiveElements = document.querySelectorAll('a, button, .btn, .btn-social, .view-stats-btn');
+    interactiveElements.forEach(el => {
+        el.style.pointerEvents = 'auto';
+        el.style.cursor = 'pointer';
+    });
+});
