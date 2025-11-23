@@ -3,47 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EduPath AI – Study Abroad Guidance</title>
+    <title>EduPath AI – Advanced Platform</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header>
-        <h1>EduPath AI</h1>
-        <p>Your Smart Study Abroad Assistant</p>
-    </header>
+    <!-- NAV BAR -->
+    <nav>
+        <div class="logo">EduPath AI</div>
+        <ul>
+            <li onclick="switchSection('home')">Home</li>
+            <li onclick="switchSection('recommend')">AI Recommendation</li>
+            <li onclick="switchSection('universities')">Universities</li>
+            <li onclick="switchSection('visa')">Visa Checker</li>
+            <li onclick="switchSection('login')">Login</li>
+        </ul>
+    </nav>
 
-    <section class="form-section">
-        <h2>Find Your Best Study Destination</h2>
-
-        <form id="studentForm">
-            <label>Student Marks (%):</label>
-            <input type="number" id="marks" placeholder="e.g. 65" required>
-
-            <label>Budget (USD):</label>
-            <input type="number" id="budget" placeholder="e.g. 15000" required>
-
-            <label>Preferred Country:</label>
-            <select id="country">
-                <option value="">No Preference</option>
-                <option value="USA">USA</option>
-                <option value="UK">UK</option>
-                <option value="Canada">Canada</option>
-                <option value="Australia">Australia</option>
-            </select>
-
-            <label>Preferred Course:</label>
-            <input type="text" id="course" placeholder="e.g. Computer Science">
-
-            <button type="submit">Get Recommendation</button>
-        </form>
+    <!-- HOME -->
+    <section id="home" class="page active">
+        <h1>Welcome to EduPath AI</h1>
+        <p>The smartest study abroad counseling platform in Nepal.</p>
+        <button class="primary-btn" onclick="switchSection('recommend')">Start Now</button>
     </section>
 
-    <section id="result" class="result-section"></section>
+    <!-- AI RECOMMENDATION -->
+    <section id="recommend" class="page">
+        <h2>AI Study Recommendation</h2>
 
-    <footer>
-        <p>© 2025 EduPath AI • Nepal</p>
-    </footer>
+        <form id="recForm">
+            <label>Marks (%):</label>
+            <input type="number" id="marks" required>
+
+            <label>Budget (USD):</label>
+            <input type="number" id="budget" required>
+
+            <label>Preferred Course:</label>
+            <input type="text" id="course">
+
+            <label>Country Preference:</label>
+            <select id="prefCountry">
+                <option value="">No preference</option>
+                <option>USA</option>
+                <option>UK</option>
+                <option>Canada</option>
+                <option>Australia</option>
+            </select>
+
+            <button class="primary-btn" type="submit">Generate Recommendation</button>
+        </form>
+
+        <div id="recResult" class="result-card"></div>
+    </section>
+
+    <!-- UNIVERSITY SEARCH -->
+    <section id="universities" class="page">
+        <h2>Popular Universities</h2>
+        <input id="uniSearch" placeholder="Search university or country..." oninput="filterUniversities()">
+
+        <div id="uniList"></div>
+    </section>
+
+    <!-- VISA CALCULATOR -->
+    <section id="visa" class="page">
+        <h2>Visa Eligibility Checker</h2>
+
+        <form id="visaForm">
+            <label>IELTS Score:</label>
+            <input type="number" id="ielts" step="0.5" required>
+
+            <label>Bank Balance (USD):</label>
+            <input type="number" id="balance" required>
+
+            <label>Gap Years:</label>
+            <input type="number" id="gap" required>
+
+            <button class="primary-btn" type="submit">Check Eligibility</button>
+        </form>
+
+        <div id="visaResult" class="result-card"></div>
+    </section>
+
+    <!-- LOGIN / SIGNUP -->
+    <section id="login" class="page">
+        <h2>Student Login</h2>
+
+        <input id="email" placeholder="Email">
+        <input id="password" placeholder="Password" type="password">
+
+        <button class="primary-btn" onclick="loginUser()">Login</button>
+        <button class="secondary-btn" onclick="signupUser()">Create Account</button>
+
+        <div id="authMsg"></div>
+    </section>
+
+    <!-- ADMIN DASHBOARD MOCK -->
+    <section id="dashboard" class="page">
+        <h2>Admin Dashboard</h2>
+        <p>(Prototype) Here you can manage students, applications, and leads.</p>
+
+        <button class="primary-btn" onclick="logoutUser()">Logout</button>
+    </section>
 
     <script src="script.js"></script>
 </body>
