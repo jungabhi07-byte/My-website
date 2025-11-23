@@ -1,48 +1,103 @@
-document.getElementById("studentForm").addEventListener("submit", function(e) {
+/* PAGE SWITCHER */
+function switchSection(id) {
+    document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
+    document.getElementById(id).classList.add("active");
+}
+
+/* --------------------------
+   AI RECOMMENDATION LOGIC
+--------------------------- */
+document.getElementById("recForm").addEventListener("submit", function(e) {
     e.preventDefault();
 
-    const marks = parseFloat(document.getElementById("marks").value);
-    const budget = parseFloat(document.getElementById("budget").value);
-    const preferredCountry = document.getElementById("country").value;
-    const course = document.getElementById("course").value || "your chosen subject";
+    const marks = parseFloat(marks.value);
+    const budget = parseFloat(budget.value);
+    const course = course.value || "your selected course";
+    const pref = prefCountry.value;
 
-    const recommendation = getRecommendation(marks, budget, preferredCountry, course);
-
-    const resultDiv = document.getElementById("result");
-    resultDiv.style.display = "block";
-    resultDiv.innerHTML = `
-        <h3>Recommended Study Plan</h3>
-        <p>${recommendation}</p>
-    `;
+    const result = generateAIrecommendation(marks, budget, course, pref);
+    recResult.innerHTML = result;
 });
 
-function getRecommendation(marks, budget, preferredCountry, course) {
+function generateAIrecommendation(marks, budget, course, pref) {
+    let chosen = pref;
 
-    // Basic AI-style logic (prototype)
-    let country = preferredCountry;
-
-    if (!country) {
-        if (marks >= 75 && budget >= 25000) country = "USA";
-        else if (marks >= 60 && budget >= 20000) country = "UK";
-        else if (marks >= 55 && budget >= 15000) country = "Canada";
-        else country = "Australia";
+    if (!chosen) {
+        if (marks >= 75 && budget >= 25000) chosen = "USA";
+        else if (marks >= 60 && budget >= 20000) chosen = "UK";
+        else if (marks >= 55 && budget >= 15000) chosen = "Canada";
+        else chosen = "Australia";
     }
 
-    const messages = {
-        "USA": `Great for STEM programs and research opportunities in ${course}.`,
-        "UK": `Best for 1-year master’s programs and strong academic reputation.`,
-        "Canada": `Affordable tuition, high visa success rate, and PR pathways.`,
-        "Australia": `Good for flexible entry requirements and strong job market.`,
-    };
-
-    let budgetStatus = budget < 15000 ? 
-        "Your budget is on the lower side. Consider applying for scholarships or community colleges." :
-        "Your budget is suitable for most universities in your selected destination.";
-
     return `
-        Based on your marks (${marks}%), budget (${budget} USD), and course preference (${course}), 
-        <strong>${country}</strong> is the best match for you.<br><br>
-        ${messages[country]}<br><br>
-        ${budgetStatus}
+        <h3>Recommended Country: ${chosen}</h3>
+        <p>Based on your profile, <strong>${chosen}</strong> is the most suitable destination.</p>
+        <p>Course Focus: ${course}</p>
+        <p>Estimated Budget Fit: ${budget} USD</p>
     `;
+}
+
+/* --------------------------
+   UNIVERSITY DATABASE (MOCK)
+--------------------------- */
+const universities = [
+    { name: "Harvard University", country: "USA" },
+    { name: "MIT", country: "USA" },
+    { name: "University of Toronto", country: "Canada" },
+    { name: "University of Melbourne", country: "Australia" },
+    { name: "University of Oxford", country: "UK" },
+    { name: "University of Sydney", country: "Australia" }
+];
+
+function filterUniversities() {
+    const search = uniSearch.value.toLowerCase();
+    const list = universities
+        .filter(u => u.name.toLowerCase().includes(search) || u.country.toLowerCase().includes(search))
+        .map(u => `
+            <div class="uni-card">
+                <strong>${u.name}</strong><br>
+                Country: ${u.country}
+            </div>
+        `).join("");
+
+    uniList.innerHTML = list;
+}
+
+filterUniversities();
+
+/* --------------------------
+   VISA ELIGIBILITY CHECKER
+--------------------------- */
+document.getElementById("visaForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const score = parseFloat(ielts.value);
+    const balance = parseFloat(balance.value);
+    const gapYears = parseFloat(gap.value);
+
+    let message = "";
+
+    if (score < 5.5) message = "Low IELTS score. Improve before applying.";
+    else if (balance < 15000) message = "Insufficient bank balance.";
+    else if (gapYears > 5) message = "Large study gap may require justification.";
+    else message = "You are eligible to apply for student visa!";
+
+    visaResult.innerHTML = `<h3>Visa Result</h3><p>${message}</p>`;
+});
+
+/* --------------------------
+   LOGIN / SIGNUP (MOCK)
+--------------------------- */
+function loginUser() {
+    authMsg.innerHTML = "<p style='color:green;'>Logged in successfully (mock)</p>";
+    switchSection("dashboard");
+}
+
+function signupUser() {
+    authMsg.innerHTML = "<p style='color:blue;'>Account created (mock)</p>";
+}
+
+function logoutUser() {
+    switchSection("login");
+    authMsg.innerHTML = "";
 }
