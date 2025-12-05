@@ -3,108 +3,231 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EduPath AI – Advanced Platform</title>
+    <title>EduPath AI - Smart Study Abroad Platform for Nepali Students</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-
-    <!-- NAV BAR -->
-    <nav>
-        <div class="logo">EduPath AI</div>
-        <ul>
-            <li onclick="switchSection('home')">Home</li>
-            <li onclick="switchSection('recommend')">AI Recommendation</li>
-            <li onclick="switchSection('universities')">Universities</li>
-            <li onclick="switchSection('visa')">Visa Checker</li>
-            <li onclick="switchSection('login')">Login</li>
-        </ul>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <h1>EduPath<span class="ai-text">AI</span></h1>
+            </div>
+            <div class="nav-links">
+                <a href="#" class="active"><i class="fas fa-home"></i> Home</a>
+                <a href="#ai-tool"><i class="fas fa-robot"></i> AI Matcher</a>
+                <a href="#countries"><i class="fas fa-globe-asia"></i> Countries</a>
+                <a href="#calculator"><i class="fas fa-calculator"></i> Cost Calculator</a>
+                <a href="#scholarships"><i class="fas fa-award"></i> Scholarships</a>
+                <a href="#" class="login-btn"><i class="fas fa-user"></i> Login</a>
+                <a href="#" class="consult-btn">Free Consultation</a>
+            </div>
+        </div>
     </nav>
 
-    <!-- HOME -->
-    <section id="home" class="page active">
-        <h1>Welcome to EduPath AI</h1>
-        <p>The smartest study abroad counseling platform in Nepal.</p>
-        <button class="primary-btn" onclick="switchSection('recommend')">Start Now</button>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h2 class="hero-title">Study Abroad Made <span class="highlight">Smart</span> for Nepali Students</h2>
+                <p class="hero-subtitle">AI-powered university matching, visa guidance, and scholarship discovery tailored for students from Nepal</p>
+                
+                <!-- Interactive AI Widget -->
+                <div class="ai-widget">
+                    <h3><i class="fas fa-bolt"></i> Quick AI Match</h3>
+                    <div class="widget-controls">
+                        <div class="control-group">
+                            <label><i class="fas fa-chart-line"></i> Your +2 Percentage</label>
+                            <div class="slider-container">
+                                <input type="range" min="60" max="100" value="75" class="slider" id="marks-slider">
+                                <span class="slider-value" id="marks-value">75%</span>
+                            </div>
+                        </div>
+                        
+                        <div class="control-group">
+                            <label><i class="fas fa-wallet"></i> Annual Budget (USD)</label>
+                            <select id="budget-select" class="budget-select">
+                                <option value="10000">Under $10,000</option>
+                                <option value="20000" selected>$10,000 - $20,000</option>
+                                <option value="30000">$20,000 - $30,000</option>
+                                <option value="50000">$30,000+</option>
+                            </select>
+                        </div>
+                        
+                        <div class="control-group">
+                            <label><i class="fas fa-book"></i> Preferred Field</label>
+                            <select id="field-select" class="field-select">
+                                <option value="cs">Computer Science</option>
+                                <option value="mba">MBA/Business</option>
+                                <option value="engineering">Engineering</option>
+                                <option value="medicine">Medicine/Health</option>
+                                <option value="arts">Arts/Humanities</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <button id="find-match" class="ai-match-btn">
+                        <i class="fas fa-search"></i> Find My Match
+                    </button>
+                    
+                    <!-- Results will appear here -->
+                    <div id="match-result" class="match-result"></div>
+                </div>
+                
+                <div class="trust-stats">
+                    <div class="stat">
+                        <span class="stat-number" id="student-count">15,000+</span>
+                        <span class="stat-label">Nepali Students Helped</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">₹50Cr+</span>
+                        <span class="stat-label">Scholarships Secured</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">95%</span>
+                        <span class="stat-label">Visa Success Rate</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Students studying abroad">
+            </div>
+        </div>
     </section>
 
-    <!-- AI RECOMMENDATION -->
-    <section id="recommend" class="page">
-        <h2>AI Study Recommendation</h2>
-
-        <form id="recForm">
-            <label>Marks (%):</label>
-            <input type="number" id="marks" required>
-
-            <label>Budget (USD):</label>
-            <input type="number" id="budget" required>
-
-            <label>Preferred Course:</label>
-            <input type="text" id="course">
-
-            <label>Country Preference:</label>
-            <select id="prefCountry">
-                <option value="">No preference</option>
-                <option>USA</option>
-                <option>UK</option>
-                <option>Canada</option>
-                <option>Australia</option>
-            </select>
-
-            <button class="primary-btn" type="submit">Generate Recommendation</button>
-        </form>
-
-        <div id="recResult" class="result-card"></div>
+    <!-- Features Section -->
+    <section class="features" id="ai-tool">
+        <h2 class="section-title">How EduPath AI Works</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <h3>AI Profile Analysis</h3>
+                <p>Our AI evaluates your academic scores, budget, and preferences to find perfect matches.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-university"></i>
+                </div>
+                <h3>University Matching</h3>
+                <p>Get personalized recommendations from 1000+ universities worldwide.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-file-invoice-dollar"></i>
+                </div>
+                <h3>Budget Planning</h3>
+                <p>Detailed cost breakdown including tuition, living, and hidden expenses.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-passport"></i>
+                </div>
+                <h3>Visa Guidance</h3>
+                <p>Step-by-step visa assistance tailored for Nepali students.</p>
+            </div>
+        </div>
     </section>
 
-    <!-- UNIVERSITY SEARCH -->
-    <section id="universities" class="page">
-        <h2>Popular Universities</h2>
-        <input id="uniSearch" placeholder="Search university or country..." oninput="filterUniversities()">
-
-        <div id="uniList"></div>
+    <!-- Country Comparison -->
+    <section class="countries" id="countries">
+        <h2 class="section-title">Top Destinations for Nepali Students</h2>
+        <div class="countries-grid">
+            <!-- Countries will be populated by JavaScript -->
+        </div>
     </section>
 
-    <!-- VISA CALCULATOR -->
-    <section id="visa" class="page">
-        <h2>Visa Eligibility Checker</h2>
-
-        <form id="visaForm">
-            <label>IELTS Score:</label>
-            <input type="number" id="ielts" step="0.5" required>
-
-            <label>Bank Balance (USD):</label>
-            <input type="number" id="balance" required>
-
-            <label>Gap Years:</label>
-            <input type="number" id="gap" required>
-
-            <button class="primary-btn" type="submit">Check Eligibility</button>
-        </form>
-
-        <div id="visaResult" class="result-card"></div>
+    <!-- Cost Calculator -->
+    <section class="calculator" id="calculator">
+        <h2 class="section-title">Study Abroad Cost Calculator</h2>
+        <div class="calc-container">
+            <div class="calc-inputs">
+                <div class="calc-input">
+                    <label>Select Destination</label>
+                    <select id="country-select">
+                        <option value="germany">Germany</option>
+                        <option value="canada">Canada</option>
+                        <option value="australia">Australia</option>
+                        <option value="usa">USA</option>
+                        <option value="japan">Japan</option>
+                    </select>
+                </div>
+                <div class="calc-input">
+                    <label>Program Duration (Years)</label>
+                    <input type="number" id="duration" min="1" max="5" value="3">
+                </div>
+                <button id="calculate-cost" class="calc-btn">Calculate Total Cost</button>
+            </div>
+            <div class="calc-result">
+                <h3>Estimated Cost Breakdown</h3>
+                <div class="cost-breakdown">
+                    <canvas id="cost-chart"></canvas>
+                </div>
+                <div class="total-cost">
+                    <h4>Total Estimated Cost: <span id="total-amount">$0</span></h4>
+                    <p id="cost-details"></p>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <!-- LOGIN / SIGNUP -->
-    <section id="login" class="page">
-        <h2>Student Login</h2>
-
-        <input id="email" placeholder="Email">
-        <input id="password" placeholder="Password" type="password">
-
-        <button class="primary-btn" onclick="loginUser()">Login</button>
-        <button class="secondary-btn" onclick="signupUser()">Create Account</button>
-
-        <div id="authMsg"></div>
+    <!-- Call to Action -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>Ready to Start Your Journey?</h2>
+            <p>Book a free consultation with our AI counselor today</p>
+            <div class="cta-buttons">
+                <button class="cta-primary">
+                    <i class="fas fa-calendar-alt"></i> Book Free Session
+                </button>
+                <button class="cta-secondary">
+                    <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+                </button>
+            </div>
+        </div>
     </section>
 
-    <!-- ADMIN DASHBOARD MOCK -->
-    <section id="dashboard" class="page">
-        <h2>Admin Dashboard</h2>
-        <p>(Prototype) Here you can manage students, applications, and leads.</p>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>EduPath AI</h3>
+                <p>Smart study abroad solutions for Nepali students since 2023.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="#">For Nepali Students</a>
+                <a href="#">Scholarship Deadlines</a>
+                <a href="#">Visa Success Stories</a>
+                <a href="#">Blog & Guides</a>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Kathmandu, Nepal</p>
+                <p><i class="fas fa-phone"></i> +977 9800000000</p>
+                <p><i class="fas fa-envelope"></i> info@edupathai.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 EduPath AI. All rights reserved.</p>
+        </div>
+    </footer>
 
-        <button class="primary-btn" onclick="logoutUser()">Logout</button>
-    </section>
+    <!-- Floating WhatsApp Button -->
+    <a href="#" class="whatsapp-float">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
