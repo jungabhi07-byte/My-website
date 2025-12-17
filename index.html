@@ -1,233 +1,460 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EduPath AI - Smart Study Abroad Platform for Nepali Students</title>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="Abhishek Budhathoki - Data Science Student at Kathmandu University" />
+    <meta name="author" content="Abhishek Budhathoki" />
+    <title>Abhishek Budhathoki | Data Scientist</title>
+    <!-- Favicon-->
+    <link rel="icon" type="x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>" />
+    <!-- Font Awesome icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="style.css" rel="stylesheet">
 </head>
-<body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="logo">
-                <i class="fas fa-graduation-cap"></i>
-                <h1>EduPath<span class="ai-text">AI</span></h1>
-            </div>
-            <div class="nav-links">
-                <a href="#" class="active"><i class="fas fa-home"></i> Home</a>
-                <a href="#ai-tool"><i class="fas fa-robot"></i> AI Matcher</a>
-                <a href="#countries"><i class="fas fa-globe-asia"></i> Countries</a>
-                <a href="#calculator"><i class="fas fa-calculator"></i> Cost Calculator</a>
-                <a href="#scholarships"><i class="fas fa-award"></i> Scholarships</a>
-                <a href="#" class="login-btn"><i class="fas fa-user"></i> Login</a>
-                <a href="#" class="consult-btn">Free Consultation</a>
+<body id="page-top">
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="#page-top">Abhishek Budhathoki</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#stats">Stats</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    <li class="nav-item">
+                        <button class="btn btn-outline-light btn-sm ms-2" onclick="toggleDarkMode()">
+                            <i class="fas fa-moon"></i>
+                        </button>
+                    </li>
+                </ul>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <div class="hero-text">
-                <h2 class="hero-title">Study Abroad Made <span class="highlight">Smart</span> for Nepali Students</h2>
-                <p class="hero-subtitle">AI-powered university matching, visa guidance, and scholarship discovery tailored for students from Nepal</p>
-                
-                <!-- Interactive AI Widget -->
-                <div class="ai-widget">
-                    <h3><i class="fas fa-bolt"></i> Quick AI Match</h3>
-                    <div class="widget-controls">
-                        <div class="control-group">
-                            <label><i class="fas fa-chart-line"></i> Your +2 Percentage</label>
-                            <div class="slider-container">
-                                <input type="range" min="60" max="100" value="75" class="slider" id="marks-slider">
-                                <span class="slider-value" id="marks-value">75%</span>
+       <!-- Header -->
+    <header class="masthead">
+        <div class="container d-flex align-items-center flex-column">
+            <img class="masthead-avatar" src="intro.jpg" alt="Abhishek Budhathoki">
+            <h1 class="masthead-heading">Abhishek Budhathoki</h1>
+            <div class="divider-custom divider-light">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+            <p class="masthead-subtitle">Data Science Student</p>
+            
+            <!-- Clean Social Media Links - Fixed Version -->
+            <div class="social-buttons">
+                <a href="https://www.youtube.com/@AbhishekBudhathoki7" class="btn-social youtube" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-youtube"></i>
+                    <span>YouTube</span>
+                </a>
+                <a href="https://www.facebook.com/abhishek.budhathoki.16804" class="btn-social facebook" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-facebook-f"></i>
+                    <span>Facebook</span>
+                </a>
+                <a href="https://www.linkedin.com" class="btn-social linkedin" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-linkedin-in"></i>
+                    <span>LinkedIn</span>
+                </a>
+            </div>
+
+            <a href="#stats" class="btn btn-lg btn-outline-light mt-4 view-stats-btn">
+                <i class="fas fa-arrow-down me-2"></i>View My Stats
+            </a>
+        </div>
+    </header>
+
+    <!-- Statistics Section -->
+    <section id="stats" class="stats-section">
+        <div class="container">
+            <h2 class="text-center mb-5 text-white">My Journey in Numbers</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="stat-card">
+                        <span class="stat-number" data-count="12">0</span>
+                        <div class="stat-label">Technologies Mastered</div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="stat-card">
+                        <span class="stat-number" data-count="7">0</span>
+                        <div class="stat-label">Projects Completed</div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="stat-card">
+                        <span class="stat-number" data-count="2">0</span>
+                        <div class="stat-label">Years Experience</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="about-content">
+                        <p class="lead">
+                            I'm a passionate Data Science student at Kathmandu University, dedicated to transforming complex data into meaningful insights. 
+                            I love exploring machine learning algorithms, statistical models, and data visualization techniques to solve real-world problems.
+                        </p>
+                        <p>
+                            When I'm not coding or analyzing data, you can find me exploring new technologies, 
+                            contributing to open-source projects, or participating in data science competitions.
+                        </p>
+                        <a href="#contact" class="btn btn-primary mt-3">
+                            <i class="fas fa-paper-plane me-2"></i>Get In Touch
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="about-stats">
+                        <div class="about-stat">
+                            <span class="about-stat-number" data-count="7">0</span>
+                            <div class="about-stat-label">Projects Completed</div>
+                        </div>
+                        <div class="about-stat">
+                            <span class="about-stat-number" data-count="12">0</span>
+                            <div class="about-stat-label">Technologies</div>
+                        </div>
+                        <div class="about-stat">
+                            <span class="about-stat-number" data-count="2">0</span>
+                            <div class="about-stat-label">Years Experience</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills-section">
+        <div class="container">
+            <h2 class="section-title">Skills & Technologies</h2>
+            <div class="row">
+                <div class="col-lg-6">
+                    <h4 class="skill-category-title"><i class="fas fa-chart-bar me-2"></i>Technical Skills</h4>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span><i class="fab fa-python me-2"></i>Python Programming</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="90"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span><i class="fas fa-brain me-2"></i>Machine Learning</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="85"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span><i class="fas fa-chart-line me-2"></i>Data Analysis</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="80"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span><i class="fas fa-network-wired me-2"></i>Deep Learning</span>
+                            <span>75%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="75"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span><i class="fas fa-database me-2"></i>SQL & Databases</span>
+                            <span>70%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="70"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <h4 class="skill-category-title"><i class="fas fa-tools me-2"></i>Tools & Technologies</h4>
+                    <div class="skills-grid">
+                        <div class="tech-item">
+                            <i class="fab fa-python"></i>
+                            <div>
+                                <strong>Python</strong>
+                                <small>Advanced</small>
                             </div>
                         </div>
-                        
-                        <div class="control-group">
-                            <label><i class="fas fa-wallet"></i> Annual Budget (USD)</label>
-                            <select id="budget-select" class="budget-select">
-                                <option value="10000">Under $10,000</option>
-                                <option value="20000" selected>$10,000 - $20,000</option>
-                                <option value="30000">$20,000 - $30,000</option>
-                                <option value="50000">$30,000+</option>
-                            </select>
+                        <div class="tech-item">
+                            <i class="fas fa-table"></i>
+                            <div>
+                                <strong>Pandas</strong>
+                                <small>Data Analysis</small>
+                            </div>
                         </div>
-                        
-                        <div class="control-group">
-                            <label><i class="fas fa-book"></i> Preferred Field</label>
-                            <select id="field-select" class="field-select">
-                                <option value="cs">Computer Science</option>
-                                <option value="mba">MBA/Business</option>
-                                <option value="engineering">Engineering</option>
-                                <option value="medicine">Medicine/Health</option>
-                                <option value="arts">Arts/Humanities</option>
-                            </select>
+                        <div class="tech-item">
+                            <i class="fas fa-brain"></i>
+                            <div>
+                                <strong>TensorFlow</strong>
+                                <small>ML Framework</small>
+                            </div>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fab fa-r-project"></i>
+                            <div>
+                                <strong>R Programming</strong>
+                                <small>Statistical Analysis</small>
+                            </div>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-database"></i>
+                            <div>
+                                <strong>SQL</strong>
+                                <small>Database Management</small>
+                            </div>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fab fa-git-alt"></i>
+                            <div>
+                                <strong>Git</strong>
+                                <small>Version Control</small>
+                            </div>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-chart-bar"></i>
+                            <div>
+                                <strong>Matplotlib</strong>
+                                <small>Data Visualization</small>
+                            </div>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-chart-pie"></i>
+                            <div>
+                                <strong>Seaborn</strong>
+                                <small>Statistical Plots</small>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#projects" class="btn btn-outline-primary mt-4">
+                        <i class="fas fa-laptop-code me-2"></i>View My Projects
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects-section">
+        <div class="container">
+            <h2 class="section-title">My Projects</h2>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="project-content">
+                            <h3>Stock Market Prediction</h3>
+                            <p>Machine learning model to predict Nepal stock market trends using LSTM and sentiment analysis.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">LSTM</span>
+                                <span class="tech-tag">NLP</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/jungabhi07-byte" class="btn btn-sm btn-outline-primary">
+                                    <i class="fab fa-github me-1"></i>Code
+                                </a>
+                                <a href="#" class="btn btn-sm btn-primary">
+                                    <i class="fas fa-external-link-alt me-1"></i>Live Demo
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <i class="fas fa-lungs"></i>
+                        </div>
+                        <div class="project-content">
+                            <h3>COVID-19 Analysis</h3>
+                            <p>Comprehensive analysis of COVID-19 spread patterns and predictive modeling for South Asia.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Pandas</span>
+                                <span class="tech-tag">Matplotlib</span>
+                                <span class="tech-tag">Scikit-learn</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/jungabhi07-byte" class="btn btn-sm btn-outline-primary">
+                                    <i class="fab fa-github me-1"></i>Code
+                                </a>
+                                <a href="#" class="btn btn-sm btn-primary">
+                                    <i class="fas fa-external-link-alt me-1"></i>Live Demo
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <i class="fas fa-seedling"></i>
+                        </div>
+                        <div class="project-content">
+                            <h3>Crop Yield Prediction</h3>
+                            <p>Predicting agricultural yields in Nepal using satellite imagery and weather data analysis.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Random Forest</span>
+                                <span class="tech-tag">OpenCV</span>
+                                <span class="tech-tag">GeoPandas</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/jungabhi07-byte" class="btn btn-sm btn-outline-primary">
+                                    <i class="fab fa-github me-1"></i>Code
+                                </a>
+                                <a href="#" class="btn btn-sm btn-primary">
+                                    <i class="fas fa-external-link-alt me-1"></i>Live Demo
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <a href="https://github.com/jungabhi07-byte" class="btn btn-primary">
+                    <i class="fab fa-github me-2"></i>View All Projects
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h5>Email</h5>
+                                <p>jungabhi07@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h5>Location</h5>
+                                <p>Kathmandu University, Dhulikhel</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-university"></i>
+                            <div>
+                                <h5>Education</h5>
+                                <p>B.Sc. Data Science, KU</p>
+                            </div>
                         </div>
                     </div>
                     
-                    <button id="find-match" class="ai-match-btn">
-                        <i class="fas fa-search"></i> Find My Match
-                    </button>
-                    
-                    <!-- Results will appear here -->
-                    <div id="match-result" class="match-result"></div>
+                    <!-- Formspree Contact Form -->
+                    <form class="contact-form" action="https://formspree.io/f/xqayrnjd" method="POST" id="contactForm">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="email" name="email" class="form-control" placeholder="Your Email" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="subject" class="form-control" placeholder="Subject" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea name="message" class="form-control" placeholder="Your Message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">
+                            <i class="fas fa-paper-plane me-2"></i>Send Message
+                        </button>
+                    </form>
                 </div>
-                
-                <div class="trust-stats">
-                    <div class="stat">
-                        <span class="stat-number" id="student-count">15,000+</span>
-                        <span class="stat-label">Nepali Students Helped</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-number">₹50Cr+</span>
-                        <span class="stat-label">Scholarships Secured</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-number">95%</span>
-                        <span class="stat-label">Visa Success Rate</span>
-                    </div>
-                </div>
-            </div>
-            <div class="hero-image">
-                <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Students studying abroad">
-            </div>
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section class="features" id="ai-tool">
-        <h2 class="section-title">How EduPath AI Works</h2>
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-robot"></i>
-                </div>
-                <h3>AI Profile Analysis</h3>
-                <p>Our AI evaluates your academic scores, budget, and preferences to find perfect matches.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-university"></i>
-                </div>
-                <h3>University Matching</h3>
-                <p>Get personalized recommendations from 1000+ universities worldwide.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-file-invoice-dollar"></i>
-                </div>
-                <h3>Budget Planning</h3>
-                <p>Detailed cost breakdown including tuition, living, and hidden expenses.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-passport"></i>
-                </div>
-                <h3>Visa Guidance</h3>
-                <p>Step-by-step visa assistance tailored for Nepali students.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Country Comparison -->
-    <section class="countries" id="countries">
-        <h2 class="section-title">Top Destinations for Nepali Students</h2>
-        <div class="countries-grid">
-            <!-- Countries will be populated by JavaScript -->
-        </div>
-    </section>
-
-    <!-- Cost Calculator -->
-    <section class="calculator" id="calculator">
-        <h2 class="section-title">Study Abroad Cost Calculator</h2>
-        <div class="calc-container">
-            <div class="calc-inputs">
-                <div class="calc-input">
-                    <label>Select Destination</label>
-                    <select id="country-select">
-                        <option value="germany">Germany</option>
-                        <option value="canada">Canada</option>
-                        <option value="australia">Australia</option>
-                        <option value="usa">USA</option>
-                        <option value="japan">Japan</option>
-                    </select>
-                </div>
-                <div class="calc-input">
-                    <label>Program Duration (Years)</label>
-                    <input type="number" id="duration" min="1" max="5" value="3">
-                </div>
-                <button id="calculate-cost" class="calc-btn">Calculate Total Cost</button>
-            </div>
-            <div class="calc-result">
-                <h3>Estimated Cost Breakdown</h3>
-                <div class="cost-breakdown">
-                    <canvas id="cost-chart"></canvas>
-                </div>
-                <div class="total-cost">
-                    <h4>Total Estimated Cost: <span id="total-amount">$0</span></h4>
-                    <p id="cost-details"></p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Call to Action -->
-    <section class="cta-section">
-        <div class="cta-content">
-            <h2>Ready to Start Your Journey?</h2>
-            <p>Book a free consultation with our AI counselor today</p>
-            <div class="cta-buttons">
-                <button class="cta-primary">
-                    <i class="fas fa-calendar-alt"></i> Book Free Session
-                </button>
-                <button class="cta-secondary">
-                    <i class="fab fa-whatsapp"></i> Chat on WhatsApp
-                </button>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>EduPath AI</h3>
-                <p>Smart study abroad solutions for Nepali students since 2023.</p>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <h5>Location</h5>
+                    <p>Kathmandu University<br>Dhulikhel, Nepal</p>
+                </div>
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <h5>Connect With Me</h5>
+                    <div class="social-links">
+                        <a href="https://www.youtube.com/@AbhishekBudhathoki7" class="social-link" target="_blank">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="https://www.facebook.com/abhishek.budhathoki.16804" class="social-link" target="_blank">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://github.com/jungabhi07-byte" class="social-link" target="_blank">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.linkedin.com" class="social-link" target="_blank">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <h5>About This Site</h5>
+                    <p>Personal portfolio of Abhishek Budhathoki<br>Data Science Student</p>
                 </div>
             </div>
-            <div class="footer-section">
-                <h3>Quick Links</h3>
-                <a href="#">For Nepali Students</a>
-                <a href="#">Scholarship Deadlines</a>
-                <a href="#">Visa Success Stories</a>
-                <a href="#">Blog & Guides</a>
+            <hr class="my-4">
+            <div class="text-center">
+                <p>&copy; 2025 Abhishek Budhathoki. All rights reserved.</p>
             </div>
-            <div class="footer-section">
-                <h3>Contact</h3>
-                <p><i class="fas fa-map-marker-alt"></i> Kathmandu, Nepal</p>
-                <p><i class="fas fa-phone"></i> +977 9800000000</p>
-                <p><i class="fas fa-envelope"></i> info@edupathai.com</p>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2023 EduPath AI. All rights reserved.</p>
         </div>
     </footer>
 
-    <!-- Floating WhatsApp Button -->
-    <a href="#" class="whatsapp-float">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+    <!-- Scroll to top button -->
+    <button class="scroll-to-top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JavaScript -->
     <script src="script.js"></script>
 </body>
 </html>
