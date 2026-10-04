@@ -1,147 +1,190 @@
-// Counter animation for statistics
-function animateCounters() {
-    const counters = document.querySelectorAll('[data-count]');
-    const speed = 200;
+// ===== Portfolio script: Abhishek Budhathoki =====
 
-    counters.forEach(counter => {
-        const target = +counter.getAttribute('data-count');
-        const count = +counter.innerText;
-        
-        if (count < target) {
-            const increment = target / speed;
-            counter.innerText = Math.ceil(count + increment);
-            setTimeout(animateCounters, 1);
+// ---------- Counter animation (stats + about) ----------
+function animateCounter(el) {
+    const target = parseInt(el.getAttribute('data-count'), 10) || 0;
+    const duration = 1500; // ms
+    const start = performance.now();
+
+    function tick(now) {
+        const progress = Math.min((now - start) / duration, 1);
+        el.innerText = Math.round(target * progress);
+        if (progress < 1) {
+            requestAnimationFrame(tick);
         } else {
-            counter.innerText = target;
+            el.innerText = target;
         }
-    });
+    }
+    requestAnimationFrame(tick);
 }
 
-// Animate skill bars
-function animateSkillBars() {
-    const skillBars = document.querySelectorAll('.skill-progress');
-    skillBars.forEach(bar => {
-        const width = bar.getAttribute('data-width');
-        bar.style.width = width + '%';
-    });
-}
+function setupCounters() {
+    const counters = document.querySelectorAll('[data-count]');
+    if (!counters.length) return;
 
-// Initialize when page loads
-document.addEventListener('DOMContentLoaded', function() {
-    // Start counter animation after a delay
-    setTimeout(animateCounters, 500);
-    
-    // Set up intersection observer for skill bars
-    const skillsObserver = new IntersectionObserver((entries) => {
+    // Fallback for very old browsers: just show final values
+    if (!('IntersectionObserver' in window)) {
+        counters.forEach(c => (c.innerText = c.getAttribute('data-count')));
+        return;
+    }
+
+    const observer = new IntersectionObserver((entries, obs) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                animateSkillBars();
-                skillsObserver.unobserve(entry.target);
+                animateCounter(entry.target);
+                obs.unobserve(entry.target); // animate each counter only once
             }
         });
-    });
+    }, { threshold: 0.4 });
 
-    const skillsSection = document.getElementById('skills');
-    if (skillsSection) {
-        skillsObserver.observe(skillsSection);
-    }
+    counters.forEach(c => observer.observe(c));
+}
 
-    // Smooth scrolling for navigation links - FIXED VERSION
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            // Only prevent default for internal links that actually exist
-            const targetId = this.getAttribute('href');
-            if (targetId !== '#') {
-                e.preventDefault();
-                const target = document.querySelector(targetId);
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
+// ---------- Skill bars (kept for compatibility; safe if none exist) ----------
+function setupSkillBars() {
+    const skillBars = document.querySelectorAll('.skill-progress');
+    if (!skillBars.length) return;
+
+    const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const bar = entry.target;
+                bar.style.width = bar.getAttribute('data-width') + '%';
+                obs.unobserve(bar);
             }
         });
-    });
+    }, { threshold: 0.3 });
 
-    // Navbar background change on scroll
-    window.addEventListener('scroll', function() {
-        const navbar = document.getElementById('mainNav');
-        if (window.scrollY > 100) {
-            navbar.style.backgroundColor = 'var(--dark-green)';
-            navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
-        } else {
-            navbar.style.backgroundColor = '';
-            navbar.style.boxShadow = 'none';
-        }
-    });
+    skillBars.forEach(bar => observer.observe(bar));
+}
 
-    // Formspree form handling with loading state
-    const contactForm = document.getElementById('contactForm');
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            // Add loading state
-            const submitBtn = this.querySelector('button[type="submit"]');
-            const originalText = submitBtn.innerHTML;
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Sending...';
-            submitBtn.disabled = true;
-            
-            // Allow Formspree to handle the submission
-            // Remove this timeout if you want Formspree to handle everything
-            setTimeout(() => {
-                submitBtn.innerHTML = originalText;
-                submitBtn.disabled = false;
-            }, 3000);
-        });
-    }
-
-    // Scroll to top button functionality
-    const scrollButton = document.querySelector('.scroll-to-top');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 300) {
-            scrollButton.style.display = 'flex';
-        } else {
-            scrollButton.style.display = 'none';
-        }
-    });
-
-    scrollButton.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-
-    // Debug: Check if buttons are clickable
-    console.log('Social buttons initialized:', document.querySelectorAll('.btn-social').length);
-    console.log('View Stats button:', document.querySelector('.view-stats-btn'));
-});
-
-// Dark mode toggle function
-function toggleDarkMode() {
-    document.body.classList.toggle('dark-mode');
-    
-    // Update button icon
-    const darkModeBtn = document.querySelector('[onclick="toggleDarkMode()"]');
-    const icon = darkModeBtn.querySelector('i');
-    
-    if (document.body.classList.contains('dark-mode')) {
-        icon.classList.remove('fa-moon');
-        icon.classList.add('fa-sun');
-        // Add dark mode styles
-        document.documentElement.style.setProperty('--light-green', '#1a1a1a');
-        document.documentElement.style.setProperty('--text-dark', '#f8f9fa');
-    } else {
-        icon.classList.remove('fa-sun');
-        icon.classList.add('fa-moon');
-        // Reset to light mode
-        document.documentElement.style.setProperty('--light-green', '#e8f5e8');
-        document.documentElement.style.setProperty('--text-dark', '#333');
+// ---------- Dark mode (called from the navbar button's onclick) ----------
+function applyTheme(isDark) {
+    document.body.classList.toggle('dark-mode', isDark);
+    const icon = document.querySelector('#mainNav .fa-moon, #mainNav .fa-sun');
+    if (icon) {
+        icon.classList.toggle('fa-moon', !isDark);
+        icon.classList.toggle('fa-sun', isDark);
     }
 }
 
-// Force enable pointer events for all interactive elements
-document.addEventListener('DOMContentLoaded', function() {
-    const interactiveElements = document.querySelectorAll('a, button, .btn, .btn-social, .view-stats-btn');
-    interactiveElements.forEach(el => {
-        el.style.pointerEvents = 'auto';
-        el.style.cursor = 'pointer';
+function toggleDarkMode() {
+    const isDark = !document.body.classList.contains('dark-mode');
+    applyTheme(isDark);
+    try {
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    } catch (e) { /* storage unavailable, ignore */ }
+}
+
+// ---------- Navbar shrink + scroll-to-top ----------
+function handleScroll() {
+    const nav = document.getElementById('mainNav');
+    if (nav) nav.classList.toggle('navbar-shrink', window.scrollY > 80);
+
+    const topBtn = document.querySelector('.scroll-to-top');
+    if (topBtn) {
+        const show = window.scrollY > 300;
+        topBtn.classList.toggle('show', show);
+        topBtn.style.display = show ? 'block' : 'none';
+    }
+}
+
+// ---------- Smooth scrolling + close mobile menu on link click ----------
+function setupNavigation() {
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+        link.addEventListener('click', function (e) {
+            const id = this.getAttribute('href');
+            if (id.length < 2) return;
+            const target = document.querySelector(id);
+            if (!target) return;
+            e.preventDefault();
+            const offset = (document.getElementById('mainNav') || { offsetHeight: 0 }).offsetHeight;
+            window.scrollTo({ top: target.offsetTop - offset + 1, behavior: 'smooth' });
+
+            const menu = document.getElementById('navbarResponsive');
+            if (menu && menu.classList.contains('show') && window.bootstrap) {
+                bootstrap.Collapse.getOrCreateInstance(menu).hide();
+            }
+        });
     });
+
+    const topBtn = document.querySelector('.scroll-to-top');
+    if (topBtn) {
+        topBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    }
+
+    // Highlight active nav link while scrolling
+    const sections = ['about', 'experience', 'skills', 'projects', 'contact']
+        .map(id => document.getElementById(id))
+        .filter(Boolean);
+    if ('IntersectionObserver' in window && sections.length) {
+        const spy = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    document.querySelectorAll('#mainNav .nav-link').forEach(a => {
+                        a.classList.toggle('active', a.getAttribute('href') === '#' + entry.target.id);
+                    });
+                }
+            });
+        }, { rootMargin: '-40% 0px -55% 0px' });
+        sections.forEach(s => spy.observe(s));
+    }
+}
+
+// ---------- Contact form (Formspree, with friendly feedback) ----------
+function setupContactForm() {
+    const form = document.getElementById('contactForm');
+    if (!form || !window.fetch) return; // falls back to normal form submit
+
+    form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        const button = form.querySelector('button[type="submit"]');
+        const original = button.innerHTML;
+        button.disabled = true;
+        button.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Sending...';
+
+        let note = form.querySelector('.form-status');
+        if (!note) {
+            note = document.createElement('p');
+            note.className = 'form-status mt-3 mb-0';
+            form.appendChild(note);
+        }
+
+        try {
+            const res = await fetch(form.action, {
+                method: 'POST',
+                body: new FormData(form),
+                headers: { Accept: 'application/json' }
+            });
+            if (res.ok) {
+                form.reset();
+                note.textContent = 'Thank you! Your message has been sent.';
+                note.style.color = '#198754';
+            } else {
+                throw new Error('Request failed');
+            }
+        } catch (err) {
+            note.textContent = 'Sorry, something went wrong. Please email me at jungabhi07@gmail.com.';
+            note.style.color = '#dc3545';
+        } finally {
+            button.disabled = false;
+            button.innerHTML = original;
+        }
+    });
+}
+
+// ---------- Initialize ----------
+document.addEventListener('DOMContentLoaded', function () {
+    // Restore saved theme
+    try {
+        applyTheme(localStorage.getItem('theme') === 'dark');
+    } catch (e) { /* ignore */ }
+
+    setupCounters();
+    setupSkillBars();
+    setupNavigation();
+    setupContactForm();
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
 });
