@@ -6,14 +6,33 @@
     --accent-green: #81c784;
     --text-dark: #333;
     --text-light: #f8f9fa;
+
+    /* Theme surfaces (overridden in dark mode) */
+    --surface: #ffffff;
+    --surface-alt: #e8f5e8;
+    --card-bg: #ffffff;
+    --heading-color: #2e7d32;
+    --border-color: #dddddd;
+}
+
+/* ===== Dark mode (toggled by script.js: body.dark-mode) ===== */
+body.dark-mode {
+    --surface: #17211a;
+    --surface-alt: #0f1611;
+    --card-bg: #1f2c23;
+    --text-dark: #e3ebe4;
+    --heading-color: #81c784;
+    --border-color: #34463a;
+    --light-green: #0f1611;
 }
 
 /* Base Styles */
 body {
     font-family: 'Lato', sans-serif;
-    background-color: var(--light-green);
+    background-color: var(--surface-alt);
     color: var(--text-dark);
     line-height: 1.6;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -25,7 +44,7 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 2.5rem;
     margin-bottom: 3rem;
     text-align: center;
-    color: var(--primary-green);
+    color: var(--heading-color);
     position: relative;
 }
 
@@ -46,6 +65,11 @@ h1, h2, h3, h4, h5, h6 {
     transition: all 0.3s ease;
 }
 
+.navbar.navbar-shrink {
+    padding: 0.5rem 0;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+}
+
 .navbar-brand {
     font-weight: 700;
     font-size: 1.5rem;
@@ -57,7 +81,8 @@ h1, h2, h3, h4, h5, h6 {
     transition: color 0.3s ease;
 }
 
-.navbar-nav .nav-link:hover {
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
     color: var(--accent-green) !important;
 }
 
@@ -80,6 +105,7 @@ h1, h2, h3, h4, h5, h6 {
     height: 100%;
     background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.05)"/></svg>');
     background-size: cover;
+    pointer-events: none;
 }
 
 .masthead-avatar {
@@ -103,9 +129,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .masthead-subtitle {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     margin-bottom: 1.5rem;
     opacity: 0.9;
+    max-width: 800px;
+    line-height: 1.5;
 }
 
 .divider-custom {
@@ -137,7 +165,7 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 2rem;
 }
 
-/* Fix for Social Buttons */
+/* Social Buttons (hero) */
 .social-buttons {
     display: flex;
     justify-content: center;
@@ -163,6 +191,11 @@ h1, h2, h3, h4, h5, h6 {
     z-index: 10;
 }
 
+.btn-social.github {
+    background: linear-gradient(135deg, #333333, #161b22);
+    color: white;
+}
+
 .btn-social.youtube {
     background: linear-gradient(135deg, #ff0000, #cc0000);
     color: white;
@@ -186,7 +219,7 @@ h1, h2, h3, h4, h5, h6 {
     color: white;
 }
 
-/* Fix for View My Stats button */
+/* View My Journey button */
 .view-stats-btn {
     position: relative;
     z-index: 10;
@@ -206,14 +239,9 @@ a, .btn {
     z-index: 10;
 }
 
-/* Remove any potential overlays blocking clicks */
-.masthead::before {
-    pointer-events: none;
-}
-
-/* Fix for smooth scrolling */
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: 70px;
 }
 
 /* Statistics Section */
@@ -255,7 +283,7 @@ html {
 /* About Section */
 .about-section {
     padding: 6rem 0;
-    background-color: white;
+    background-color: var(--surface);
 }
 
 .about-content {
@@ -275,7 +303,7 @@ html {
 .about-stat-number {
     font-size: 2.5rem;
     font-weight: 700;
-    color: var(--primary-green);
+    color: var(--heading-color);
     display: block;
 }
 
@@ -285,14 +313,25 @@ html {
     opacity: 0.8;
 }
 
+/* Experience Section */
+.experience-section {
+    padding: 6rem 0;
+    background-color: var(--surface-alt);
+}
+
+.project-content p em {
+    opacity: 0.75;
+    font-size: 0.95rem;
+}
+
 /* Skills Section */
 .skills-section {
     padding: 6rem 0;
-    background-color: var(--light-green);
+    background-color: var(--surface);
 }
 
 .skill-category-title {
-    color: var(--primary-green);
+    color: var(--heading-color);
     margin-bottom: 1.5rem;
     font-size: 1.5rem;
 }
@@ -329,7 +368,7 @@ html {
 }
 
 .tech-item {
-    background: white;
+    background: var(--card-bg);
     padding: 1.5rem 1rem;
     border-radius: 10px;
     display: flex;
@@ -340,21 +379,27 @@ html {
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
 }
 
+.tech-item small {
+    display: block;
+    opacity: 0.7;
+}
+
 .tech-item:hover {
     transform: translateX(5px);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .tech-item i {
-    color: var(--primary-green);
+    color: var(--heading-color);
     width: 30px;
     text-align: center;
+    font-size: 1.4rem;
 }
 
 /* Projects Section */
 .projects-section {
     padding: 6rem 0;
-    background-color: white;
+    background-color: var(--surface-alt);
 }
 
 .project-card {
@@ -363,7 +408,7 @@ html {
     overflow: hidden;
     box-shadow: 0 5px 15px rgba(46, 125, 50, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    background: white;
+    background: var(--card-bg);
     height: 100%;
 }
 
@@ -387,8 +432,9 @@ html {
 }
 
 .project-content h3 {
-    color: var(--primary-green);
+    color: var(--heading-color);
     margin-bottom: 1rem;
+    font-size: 1.4rem;
 }
 
 .project-tech {
@@ -396,8 +442,8 @@ html {
 }
 
 .tech-tag {
-    background-color: var(--light-green);
-    color: var(--primary-green);
+    background-color: var(--surface-alt);
+    color: var(--heading-color);
     padding: 0.3rem 0.8rem;
     border-radius: 20px;
     font-size: 0.8rem;
@@ -415,7 +461,7 @@ html {
 /* Contact Section */
 .contact-section {
     padding: 6rem 0;
-    background-color: var(--light-green);
+    background-color: var(--surface);
 }
 
 .contact-info {
@@ -430,13 +476,32 @@ html {
 
 .contact-item i {
     font-size: 1.5rem;
-    color: var(--primary-green);
+    color: var(--heading-color);
     margin-right: 1rem;
     margin-top: 0.25rem;
 }
 
+.contact-item h5 {
+    margin-bottom: 0.2rem;
+}
+
+.contact-item p {
+    margin: 0;
+}
+
+.contact-item a {
+    color: var(--heading-color);
+    text-decoration: none;
+}
+
+.contact-item a:hover {
+    text-decoration: underline;
+}
+
 .contact-form .form-control {
-    border: 1px solid #ddd;
+    border: 1px solid var(--border-color);
+    background-color: var(--card-bg);
+    color: var(--text-dark);
     border-radius: 8px;
     padding: 0.75rem;
     margin-bottom: 1.5rem;
@@ -446,6 +511,10 @@ html {
 .contact-form .form-control:focus {
     border-color: var(--secondary-green);
     box-shadow: 0 0 0 0.2rem rgba(76, 175, 80, 0.25);
+}
+
+.contact-form .form-status {
+    font-weight: 600;
 }
 
 /* Footer */
@@ -461,14 +530,30 @@ html {
 }
 
 .footer .social-links {
+    display: flex;
     justify-content: flex-start;
+    gap: 0.75rem;
 }
 
 .footer .social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
     background: rgba(255, 255, 255, 0.1);
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
 }
 
-/* Scroll to top button */
+.footer .social-link:hover {
+    background: var(--secondary-green);
+    transform: translateY(-3px);
+}
+
+/* Scroll to top button (script.js adds .show) */
 .scroll-to-top {
     position: fixed;
     bottom: 20px;
@@ -487,6 +572,10 @@ html {
     transition: all 0.3s ease;
 }
 
+.scroll-to-top.show {
+    display: flex;
+}
+
 .scroll-to-top:hover {
     background: var(--dark-green);
     transform: translateY(-3px);
@@ -494,36 +583,40 @@ html {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    .masthead {
+        padding: 8rem 0 6rem;
+    }
+
     .masthead-heading {
         font-size: 2.5rem;
     }
-    
+
     .masthead-subtitle {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
     }
-    
+
     .stat-number {
         font-size: 2.5rem;
     }
-    
+
     .section-title {
         font-size: 2rem;
     }
-    
+
     .about-stats {
         flex-direction: column;
         gap: 1.5rem;
     }
-    
+
     .project-links {
         flex-direction: column;
     }
-    
+
     .social-buttons {
         flex-direction: column;
         align-items: center;
     }
-    
+
     .btn-social {
         width: 200px;
         justify-content: center;
