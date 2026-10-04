@@ -85,7 +85,6 @@ function handleScroll() {
     if (topBtn) {
         const show = window.scrollY > 300;
         topBtn.classList.toggle('show', show);
-        topBtn.style.display = show ? 'block' : 'none';
     }
 }
 
